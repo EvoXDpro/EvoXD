@@ -23,7 +23,7 @@ from . import *
 
 
 temxt = (
-    "**Puii Speedtest completed in {0} seconds.**\n\n" \
+    "**Evo Speedtest completed in {0} seconds.**\n\n" \
     "**Download:**  `{1}` \n" \
     "**Upload:**  `{2}` \n" \
     "**Ping:**  `{3} ms` \n" \
@@ -31,10 +31,10 @@ temxt = (
 )
 
 
-@puii_cmd(pattern="speedtest ?(.*)")
+@evo_cmd(pattern="speedtest ?(.*)")
 async def speemdtest(event):
     args = event.pattern_match.group(1)
-    xx = await eor(event, "`Calculating your Puii's Server Speed ...`")
+    xx = await eor(event, "`Calculating your Evo's Server Speed ...`")
     start = datetime.now()
     s = speedtest.Speedtest()
     s.get_best_server()
