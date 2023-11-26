@@ -2,10 +2,10 @@ from secrets import choice
 
 from telethon.tl.types import InputMessagesFilterVideo, InputMessagesFilterVoice
 
-from . import evo_cmd
+from . import EvoXD_cmd
 
 
-@evo_cmd(pattern="asupan$")
+@EvoXD_cmd(pattern="asupan$")
 async def _(event):
     xx = await event.eor("`Wait a moment...`")
     try:
@@ -26,7 +26,7 @@ async def _(event):
         await xx.edit("**Could not find intake video.**")
 
 
-@evo_cmd(pattern="desahcewe$")
+@EvoXD_cmd(pattern="desahcewe$")
 async def _(event):
     xx = await event.eor("`Wait a moment...`")
     try:
@@ -47,7 +47,7 @@ async def _(event):
         await xx.edit("**Can't find a girl's sigh Wait a moment.**")
 
 
-@evo_cmd(pattern="desahcowo$")
+@EvoXD_cmd(pattern="desahcowo$")
 async def _(event):
     xx = await event.eor("`Wait a moment...`")
     try:
