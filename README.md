@@ -1,17 +1,14 @@
 <p align="center">
-  <img src="./resources/extras/logo_readme.jpg" alt="Puii Logo"
+  <img src="./resources/extras/logo_readme.jpg" alt="EvoXD Logo"
   width="500" 
      height="500" />
 </p>
 <h1 align="center">
-  <b>Puii - UserBot</b>
+  <b>EvoXD - UserBot</b>
 </h1>
 <h2 align="center">
 <b>A stable pluggable Telegram userbot + Voice & Video Call music bot, based on Telethon.</b>
 </h2>
-   
-[![Sparkline](https://stars.medv.io/AellyXD/Puii.svg)](https://stars.medv.io/AellyXD/Puii)
-----
 
 # Deploy
 - [Heroku](#deploy-to-heroku)
@@ -23,12 +20,12 @@
 ## Deploy to Heroku
 Get the [Necessary Variables](#Necessary-Variables) and then click the button below!  
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/AellyXD/Puii)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/EvoXDpro/EvoXD)
 
 ## Deploy to Okteto
 Get the [Necessary Variables](#Necessary-Variables) and then click the button below!
 
-[![Develop on Okteto](https://okteto.com/develop-okteto.svg)](https://cloud.okteto.com/deploy?repository=https://github.com/AellyXD/Puii)
+[![Develop on Okteto](https://okteto.com/develop-okteto.svg)](https://cloud.okteto.com/deploy?repository=https://github.com/EvoXDpro/EvoXD)
 
 ## Deploy Locally
 - [Traditional Method](#local-deploy---traditional-method)
@@ -39,7 +36,7 @@ Get the [Necessary Variables](#Necessary-Variables) and then click the button be
 ### Local Deploy - Traditional Method
 - Get your [Necessary Variables](#Necessary-Variables)
 - Clone the repository:    
-`git clone https://github.com/AellyXD/Puii.git`
+`git clone https://github.com/EvoXDpro/EvoXD`
 - Go to the cloned folder:    
 `cd Puii`
 - Create a virtual env:      
@@ -80,8 +77,6 @@ One of the following database:
 
 ## Session String
 Different ways to get your `SESSION`:
-
-* TelegramBot : [@string_puiibot](https://t.me/string_puiibot)
 
 ---
 
