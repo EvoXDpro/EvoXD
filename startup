@@ -4,7 +4,7 @@ echo "
          ░█▀▀░█░█░░█░░░█░
          ░▀░░░▀▀▀░▀▀▀░▀▀▀
 
-      Visit @AellyXD for updates!!
+      Visit @About_EvoXpro_Owner for updates!!
 
 "
 if [ -f .env ] ; then  set -o allexport; source .env; set +o allexport ; fi
