@@ -2,7 +2,7 @@
 import os
 from time import sleep
 
-PUII = r""" ____  __  __  ____  ____ 
+EVOXD = r""" ____  __  __  ____  ____ 
 
 (  _ \(  )(  )(_  _)(_  _)
 
@@ -71,12 +71,12 @@ def telethon_session():
 
     # logging in
     try:
-        with TelegramClient(StringSession(), API_ID, API_HASH) as puii:
+        with TelegramClient(StringSession(), API_ID, API_HASH) as EvoXD:
             print("Generating a string session for •PUII•")
             try:
                 puii.send_message(
                     "me",
-                    f"**PUII** `SESSION`:\n\n`{puii.session.save()}`\n\n**Do not share this anywhere!**",
+                    f"**EVOXD** `SESSION`:\n\n`{EvoXD.session.save()}`\n\n**Do not share this anywhere!**",
                 )
                 print(
                     "Your SESSION has been generated. Check your Telegram saved messages!"
@@ -84,7 +84,7 @@ def telethon_session():
                 return
             except UserIsBotError:
                 print("You are trying to Generate Session for your Bot's Account?")
-                print("Here is That!\n{puii.session.save()}\n\n")
+                print("Here is That!\n{EvoXD.session.save()}\n\n")
                 print("NOTE: You can't use that as User Session..")
     except ApiIdInvalidError:
         print(
@@ -100,7 +100,7 @@ def telethon_session():
     except Exception as er:
         print("Unexpected Error Occurred while Creating Session")
         print(er)
-        print("If you think It as a Bug, Report to @AellyXD.\n\n")
+        print("If you think It as a Bug, Report to @EvoXpro.\n\n")
 
 
 def pyro_session():
@@ -123,11 +123,11 @@ def pyro_session():
     API_ID, API_HASH = get_api_id_and_hash()
     print("Enter phone number when asked.\n\n")
     try:
-        with Client(name="puii", api_id=API_ID, api_hash=API_HASH, in_memory=True) as pyro:
+        with Client(name="EvoXD", api_id=API_ID, api_hash=API_HASH, in_memory=True) as pyro:
             ss = pyro.export_session_string()
             pyro.send_message(
                 "me",
-                f"`{ss}`\n\nAbove is your Pyrogram Session String for @AellyXD **DO NOT SHARE it.**",
+                f"`{ss}`\n\nAbove is your Pyrogram Session String for @EvoXpro **DO NOT SHARE it.**",
             )
             print("Session has been sent to your saved messages!")
             exit(0)
@@ -142,7 +142,7 @@ def main():
     try:
         type_of_ss = int(
             input(
-                "\nAelly supports both telethon as well as pyrogram sessions.\n\nWhich session do you want to generate?\n1. Telethon Session.\n2. Pyrogram Session.\n\nEnter choice:  "
+                "\nEvoXDpro supports both telethon as well as pyrogram sessions.\n\nWhich session do you want to generate?\n1. Telethon Session.\n2. Pyrogram Session.\n\nEnter choice:  "
             )
         )
     except Exception as e:
