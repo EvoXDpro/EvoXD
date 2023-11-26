@@ -1,4 +1,4 @@
-FROM aellyxd/puii:main
+FROM EvoXDpro/EvoXD:main
 
 # set timezone
 ENV TZ=Asia/Kolkata
@@ -13,7 +13,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
 RUN if [ ! $RAILWAY_STATIC_URL ]; then pip3 install --no-cache-dir yt-dlp; fi
 
 # changing workdir
-WORKDIR /root/TeamUltroid/
+WORKDIR /root/EvoXDpro/
 
 # start the bot
 CMD ["bash", "startup"]
