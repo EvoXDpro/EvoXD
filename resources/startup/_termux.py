@@ -36,12 +36,16 @@ APT_PACKAGES = ["ffmpeg", "neofetch", "mediainfo"]
 
 DISCLAIMER_TEXT = ""
 
-COPYRIGHT = f"©️ AellyXD {datetime.now().year}"
+COPYRIGHT = f"©️ EvoXDpro {datetime.now().year}"
 
 HEADER = f"""{Fore.MAGENTA}
-░█▀█░█░█░▀█▀░▀█▀
-░█▀▀░█░█░░█░░░█░
-░▀░░░▀▀▀░▀▀▀░▀▀▀\n{Fore.RESET}
+    🌷🌸🌷🌸
+    🌸🌷🌸🌷🌸
+ Λ🌷🌸🌷🌸🌷
+( ˘ ᵕ ˘🌷🌸🌷
+ヽ  つ＼     ／
+   UU   / 🎀 \
+ 𝙀𝙑𝙊 𝙋𝙍𝙊 𝙐𝙎𝙀𝙍𝘽𝙊𝙏\n{Fore.RESET}
 """
 
 INFO_TEXT = f"""
@@ -52,7 +56,7 @@ INFO_TEXT = f"""
 2. You can install that requirement whenever you want with 'pip install' (a very basic python+bash knowledge is required.)
 
 3. Some of the plugins are disabled for 'Termux Users' to save resources (by adding in EXCLUDE_OFFICIAL).
-   - Read More - https://t.me/AellyXD/3
+   - Read More - https://t.me/Evoxdpro/2
    - Also, way to enable the disabled plugins is mentioned in that post.
 
    # Disabled Plugins Name
@@ -176,7 +180,7 @@ print(
  )___/ )(__)(  _)(_  _)(_ 
 (__)  (______)(____)(____)
 {Style.RESET_ALL}
-{Fore.GREEN}- PUII ermux Installation -
+{Fore.GREEN}- EVOXD Termux Installation -
   The Main Aim of this script is to deploy Puii with basic requirements and save your phone resources.
 {Fore.RESET}
 
@@ -224,7 +228,7 @@ Enter [ A = Ask for each, I = Install all, S = Skip, E = Exit]"""
 ask_and_wait_opt()
 
 print(f"\n{Fore.RED}#EXTRA Features...\n")
-print(f"{Fore.YELLOW}* Do you want to get Puii Logs in Colors? [Y/N] ")
+print(f"{Fore.YELLOW}* Do you want to get EvoXD Logs in Colors? [Y/N] ")
 inp = input("").strip().lower()
 if inp in ["yes", "y"]:
     print(f"{Fore.GREEN}*Spoking the Magical Mantras*")
@@ -242,9 +246,9 @@ sleep(0.2)
 print(f"Use 'bash startup' to try running Puii.{Fore.RESET}")
 sleep(0.5)
 print(
-    "\nYou can head over to @AellyXD, if you get stuck somewhere, and need help."
+    "\nYou can head over to @EvoXpro, if you get stuck somewhere, and need help."
 )
 sleep(0.5)
-print("\nMade with ❤️ by @AellyXD...")
+print("\nMade with ❤️ by @EvoXpro...")
 
 system("pip3 uninstall -q colorama -y")
