@@ -9,7 +9,7 @@
 from . import *
 from os import remove
 
-@puii_cmd(
+@evo_cmd(
     pattern="osinfo$",
 )
 async def _(e):
