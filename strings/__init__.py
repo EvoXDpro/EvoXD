@@ -3,13 +3,13 @@ import sys
 from glob import glob
 from typing import Any, Dict, List, Union
 
-from pyPuii import *
-from pyPuii.fns.tools import translate
+from pyEvoXD import *
+from pyEvoXD.fns.tools import translate
 
 try:
     from yaml import safe_load
 except ModuleNotFoundError:
-    from pyPuii.fns.tools import safe_load
+    from pyEvoXD.fns.tools import safe_load
 
 ULTConfig.lang = udB.get_key("language") or os.getenv("LANGUAGE", "en")
 
