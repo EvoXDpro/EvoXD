@@ -8,7 +8,7 @@ then
     echo "Current directory Identified.."
 else
     apt install git -y
-    git clone https://github.com/AellyXD/Puii
+    git clone https://github.com/EvoXDpro/EvoXD
     cd Puii
 fi
 bash resources/startup/termux.sh
