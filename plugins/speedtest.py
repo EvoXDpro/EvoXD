@@ -23,7 +23,7 @@ from . import *
 
 
 temxt = (
-    "**Evo Speedtest completed in {0} seconds.**\n\n" \
+    "**EvoXD Speedtest completed in {0} seconds.**\n\n" \
     "**Download:**  `{1}` \n" \
     "**Upload:**  `{2}` \n" \
     "**Ping:**  `{3} ms` \n" \
@@ -31,7 +31,7 @@ temxt = (
 )
 
 
-@evo_cmd(pattern="speedtest ?(.*)")
+@EvoXD_cmd(pattern="speedtest ?(.*)")
 async def speemdtest(event):
     args = event.pattern_match.group(1)
     xx = await eor(event, "`Calculating your Evo's Server Speed ...`")
