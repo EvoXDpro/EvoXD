@@ -27,22 +27,22 @@ def main():
     if (
         udB.get_key("UPDATE_ON_RESTART")
         and os.path.exists(".git")
-        and puii_bot.run_in_loop(updater())
+        and EvoXD_bot.run_in_loop(updater())
     ):
-        puii_bot.run_in_loop(bash("bash installer.sh"))
+        EvoXD_bot.run_in_loop(bash("bash installer.sh"))
 
-        os.execl(sys.executable, sys.executable, "-m", "pyPuii")
+        os.execl(sys.executable, sys.executable, "-m", "pyEvoXD")
 
-    puii_bot.run_in_loop(startup_stuff())
+    EvoXD_bot.run_in_loop(startup_stuff())
 
-    puii_bot.me.phone = None
+    EvoXD_bot.me.phone = None
 
-    if not puii_bot.me.bot:
-        udB.set_key("OWNER_ID", puii_bot.uid)
+    if not EvoXD_bot.me.bot:
+        udB.set_key("OWNER_ID", EvoXD_bot.uid)
 
     LOGS.info("Initialising...")
 
-    puii_bot.run_in_loop(autopilot())
+    EvoXD_bot.run_in_loop(autopilot())
 
     pmbot = udB.get_key("PMBOT")
     manager = udB.get_key("MANAGER")
@@ -60,31 +60,31 @@ def main():
     load_other_plugins(addons=addons, pmbot=pmbot, manager=manager, vcbot=vcbot)
 
     suc_msg = """
-            ----------------------------------------------------------------------
-                Puii has been deployed! Visit @AellyXD for updates!!
-            ----------------------------------------------------------------------
+            ----------------------------------------------------------------------------
+                💫 𝗘𝗩𝗢 𝗫𝗗 ❤️🥀 𝗵𝗮𝘀 𝗯𝗲𝗲𝗻 𝗱𝗲𝗽𝗹𝗼𝘆𝗲𝗱!✨ 𝗩𝗶𝘀𝗶𝘁 @EvoXpro 𝗳𝗼𝗿 𝘂𝗽𝗱𝗮𝘁𝗲𝘀!🥀!
+            ----------------------------------------------------------------------------
     """
 
     # for channel plugins
     plugin_channels = udB.get_key("PLUGIN_CHANNEL")
 
-    # Customize Puii Assistant...
-    puii_bot.run_in_loop(customize())
+    # Customize EvoXD Assistant...
+    EvoXD_bot.run_in_loop(customize())
 
     # Load Addons from Plugin Channels.
     if plugin_channels:
-        puii_bot.run_in_loop(plug(plugin_channels))
+        EvoXD_bot.run_in_loop(plug(plugin_channels))
 
     # Send/Ignore Deploy Message..
     if not udB.get_key("LOG_OFF"):
-        puii_bot.run_in_loop(ready())
+        EvoXD_bot.run_in_loop(ready())
     if AsyncIOScheduler:
         scheduler = AsyncIOScheduler()
         scheduler.add_job(fetch_ann, "interval", minutes=12 * 60)
         scheduler.start()
 
     # Edit Restarting Message (if It's restarting)
-    puii_bot.run_in_loop(WasItRestart(udB))
+    EvoXD_bot.run_in_loop(WasItRestart(udB))
 
     try:
         cleanup_cache()
@@ -92,7 +92,7 @@ def main():
         pass
 
     LOGS.info(
-        f"Took {time_formatter((time.time() - start_time)*1000)} to start *PUII*"
+        f"Took {time_formatter((time.time() - start_time)*1000)} to start *EVOXD*"
     )
     LOGS.info(suc_msg)
 
