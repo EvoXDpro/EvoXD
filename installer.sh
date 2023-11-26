@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
-REPO="https://github.com/AellyXD/Puii.git"
+REPO="https://github.com/EvoXDpro/EvoXD.git"
 CURRENT_DIR="$(pwd)"
 ENV_FILE_PATH=".env"
-DIR="/root/AellyXD"
+DIR="/root/EvoXDpro"
 
 while [ $# -gt 0 ]; do
     case "$1" in
     --dir=*)
-        DIR="${1#*=}" || DIR="/root/AellyXD"
+        DIR="${1#*=}" || DIR="/root/EvoXDpro"
         ;;
     --branch=*)
         BRANCH="${1#*=}" || BRANCH="main"
@@ -98,11 +98,11 @@ check_python() {
 }
 
 clone_repo() {
-    # check if pypuii, startup, plugins folders exist
+    # check if pyEvoXD, startup, plugins folders exist
     cd $DIR
     if [ -d $DIR ]; then
         if [ -d $DIR/.git ]; then
-            echo -e "Updating Puii ${BRANCH}... "
+            echo -e "Updating EvoXD ${BRANCH}... "
             cd $DIR
             git pull
             currentbranch="$(git rev-parse --abbrev-ref HEAD)"
@@ -133,7 +133,7 @@ clone_repo() {
             export BRANCH="main"
         fi
         mkdir -p $DIR
-        echo -e "Cloning Puii ${BRANCH}... "
+        echo -e "Cloning EvoXD ${BRANCH}... "
         git clone -b $BRANCH $REPO $DIR
     fi
 }
@@ -168,7 +168,7 @@ misc_install() {
             git pull
         else
             echo -e "Cloning VCBOT.."
-            git clone https://github.com/AellyXD/VcBot $DIR/vcbot
+            git clone https://github.com/EvoXDpro/VcBot $DIR/vcbot
         fi
         pip3 install pytgcalls==3.0.0.dev23 && pip3 install av -q --no-binary av
     fi
@@ -189,8 +189,8 @@ dep_install() {
 }
 
 main() {
-    echo -e "Starting Puii Setup..."
-    if [ -d "pyPuii" ] && [ -d "resources" ] && [ -d "plugins" ]; then
+    echo -e "Starting EvoXD Setup..."
+    if [ -d "pyEvoXD" ] && [ -d "resources" ] && [ -d "plugins" ]; then
         DIR=$CURRENT_DIR
     fi
     if [ -f $ENV_FILE_PATH ]
