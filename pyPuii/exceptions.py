@@ -10,7 +10,7 @@ Exceptions which can be raised by py-Puii Itself.
 """
 
 
-class pyPuiiError(Exception):
+class pyEvoXDError(Exception):
     ...
 
 
@@ -18,5 +18,5 @@ class DependencyMissingError(ImportError):
     ...
 
 
-class RunningAsFunctionLibError(pyPuiiError):
+class RunningAsFunctionLibError(pyEvoXDError):
     ...
