@@ -49,11 +49,11 @@ db_url = 0
 
 
 async def autoupdate_local_database():
-    from .. import Var, asst, udB, puii_bot
+    from .. import Var, asst, udB, EvoXD_bot
 
     global db_url
     db_url = (
-        udB.get_key("TGDB_URL") or Var.TGDB_URL or puii_bot._cache.get("TGDB_URL")
+        udB.get_key("TGDB_URL") or Var.TGDB_URL or EvoXD_bot._cache.get("TGDB_URL")
     )
     if db_url:
         _split = db_url.split("/")
@@ -143,32 +143,32 @@ async def startup_stuff():
             LOGS.debug(er)
         except BaseException:
             LOGS.critical(
-                "Incorrect Timezone ,\nCheck Available Timezone From Here https://graph.org/Puii-03-06\nSo Time is Default UTC"
+                "Incorrect Timezone ,\nCheck Available Timezone From Here https://graph.org/EvoXD-11-27\nSo Time is Default UTC"
             )
             os.environ["TZ"] = "UTC"
             time.tzset()
 
 
 async def autobot():
-    from .. import udB, puii_bot
+    from .. import udB, EvoXD_bot
 
     if udB.get_key("BOT_TOKEN"):
         return
-    await puii_bot.start()
+    await EvoXD_bot.start()
     LOGS.info("MAKING A TELEGRAM BOT FOR YOU AT @BotFather, Kindly Wait")
-    who = puii_bot.me
+    who = EvoXD_bot.me
     name = who.first_name + "'s Bot"
     if who.username:
         username = who.username + "_bot"
     else:
-        username = "puii_" + (str(who.id))[5:] + "_bot"
+        username = "EvoXD_" + (str(who.id))[5:] + "_bot"
     bf = "@BotFather"
-    await puii_bot(UnblockRequest(bf))
-    await puii_bot.send_message(bf, "/cancel")
+    await EvoXD_bot(UnblockRequest(bf))
+    await EvoXD_bot.send_message(bf, "/cancel")
     await asyncio.sleep(1)
-    await puii_bot.send_message(bf, "/newbot")
+    await EvoXD_bot.send_message(bf, "/newbot")
     await asyncio.sleep(1)
-    isdone = (await puii_bot.get_messages(bf, limit=1))[0].text
+    isdone = (await EvoXD_bot.get_messages(bf, limit=1))[0].text
     if isdone.startswith("That I cannot do.") or "20 bots" in isdone:
         LOGS.critical(
             "Please make a Bot from @BotFather and add it's token in BOT_TOKEN, as an env var and restart me."
@@ -176,13 +176,13 @@ async def autobot():
         import sys
 
         sys.exit(1)
-    await puii_bot.send_message(bf, name)
+    await EvoXD_bot.send_message(bf, name)
     await asyncio.sleep(1)
-    isdone = (await puii_bot.get_messages(bf, limit=1))[0].text
+    isdone = (await EvoXD_bot.get_messages(bf, limit=1))[0].text
     if not isdone.startswith("Good."):
-        await puii_bot.send_message(bf, "My Assistant Bot")
+        await EvoXD_bot.send_message(bf, "My Assistant Bot")
         await asyncio.sleep(1)
-        isdone = (await puii_bot.get_messages(bf, limit=1))[0].text
+        isdone = (await EvoXD_bot.get_messages(bf, limit=1))[0].text
         if not isdone.startswith("Good."):
             LOGS.critical(
                 "Please make a Bot from @BotFather and add it's token in BOT_TOKEN, as an env var and restart me."
@@ -190,20 +190,20 @@ async def autobot():
             import sys
 
             sys.exit(1)
-    await puii_bot.send_message(bf, username)
+    await EvoXD_bot.send_message(bf, username)
     await asyncio.sleep(1)
-    isdone = (await puii_bot.get_messages(bf, limit=1))[0].text
-    await puii_bot.send_read_acknowledge("botfather")
+    isdone = (await EvoXD_bot.get_messages(bf, limit=1))[0].text
+    await EvoXD_bot.send_read_acknowledge("botfather")
     if isdone.startswith("Sorry,"):
         ran = randint(1, 100)
-        username = "puii_" + (str(who.id))[6:] + str(ran) + "_bot"
-        await puii_bot.send_message(bf, username)
+        username = "EvoXD_" + (str(who.id))[6:] + str(ran) + "_bot"
+        await EvoXD_bot.send_message(bf, username)
         await asyncio.sleep(1)
-        isdone = (await puii_bot.get_messages(bf, limit=1))[0].text
+        isdone = (await EvoXD_bot.get_messages(bf, limit=1))[0].text
     if isdone.startswith("Done!"):
         token = isdone.split("`")[1]
         udB.set_key("BOT_TOKEN", token)
-        await enable_inline(puii_bot, username)
+        await enable_inline(EvoXD_bot, username)
         LOGS.info(
             f"Done. Successfully created @{username} to be used as your assistant bot!"
         )
@@ -224,7 +224,7 @@ async def autopilot():
     new_channel = None
     if channel:
         try:
-            chat = await puii_bot.get_entity(channel)
+            chat = await EvoXD_bot.get_entity(channel)
         except BaseException as err:
             LOGS.exception(err)
             udB.del_key("LOG_CHANNEL")
@@ -232,21 +232,21 @@ async def autopilot():
     if not channel:
 
         async def _save(exc):
-            udB._cache["LOG_CHANNEL"] = puii_bot.me.id
+            udB._cache["LOG_CHANNEL"] = EvoXD_bot.me.id
             await asst.send_message(
-                puii_bot.me.id, f"Failed to Create Log Channel due to {exc}.."
+                EvoXD_bot.me.id, f"Failed to Create Log Channel due to {exc}.."
             )
 
-        if puii_bot._bot:
+        if EvoXD_bot._bot:
             msg_ = "'LOG_CHANNEL' not found! Add it in order to use 'BOTMODE'"
             LOGS.error(msg_)
             return await _save(msg_)
         LOGS.info("Creating a Log Channel for You!")
         try:
-            r = await puii_bot(
+            r = await EvoXD_bot(
                 CreateChannelRequest(
-                    title="My Puii Logs",
-                    about="My Puii Log Group\n\n Join @AellyXD",
+                    title="My EvoXD Logs",
+                    about="My EvoXD Log Group\n\n Join @Evoxdpro",
                     megagroup=True,
                 ),
             )
@@ -268,10 +268,10 @@ async def autopilot():
         udB.set_key("LOG_CHANNEL", channel)
     assistant = True
     try:
-        await puii_bot.get_permissions(int(channel), asst.me.username)
+        await EvoXD_bot.get_permissions(int(channel), asst.me.username)
     except UserNotParticipantError:
         try:
-            await puii_bot(InviteToChannelRequest(int(channel), [asst.me.username]))
+            await EvoXD_bot(InviteToChannelRequest(int(channel), [asst.me.username]))
         except BaseException as er:
             LOGS.info("Error while Adding Assistant to Log Channel")
             LOGS.exception(er)
@@ -298,7 +298,7 @@ async def autopilot():
                 manage_call=True,
             )
             try:
-                await puii_bot(
+                await EvoXD_bot(
                     EditAdminRequest(
                         int(channel), asst.me.username, rights, "Assistant"
                     )
@@ -312,11 +312,11 @@ async def autopilot():
                 LOGS.exception(er)
     if isinstance(chat.photo, ChatPhotoEmpty):
         photo, _ = await download_file(
-            "https://graph.org/file/08c6b87d3c9257d63438c.jpg", "channelphoto.jpg"
+            "https://graph.org/file/a0df3b90c174b5948abfb.jpg", "channelphoto.jpg"
         )
-        ll = await puii_bot.upload_file(photo)
+        ll = await EvoXD_bot.upload_file(photo)
         try:
-            await puii_bot(
+            await EvoXD_bot(
                 EditPhotoRequest(int(channel), InputChatUploadedPhoto(ll))
             )
         except BaseException as er:
@@ -328,7 +328,7 @@ async def autopilot():
 
 
 async def customize():
-    from .. import asst, udB, puii_bot
+    from .. import asst, udB, EvoXD_bot
 
     rem = None
     try:
@@ -337,13 +337,13 @@ async def customize():
             return
         LOGS.info("Customising Ur Assistant Bot in @BOTFATHER")
         UL = f"@{asst.me.username}"
-        if not puii_bot.me.username:
-            sir = puii_bot.me.first_name
+        if not EvoXD_bot.me.username:
+            sir = EvoXD_bot.me.first_name
         else:
-            sir = f"@{puii_bot.me.username}"
+            sir = f"@{EvoXD_bot.me.username}"
         file = random.choice(
             [
-                "https://graph.org/file/92cd6dbd34b0d1d73a0da.jpg",
+                "https://graph.org/file/a0df3b90c174b5948abfb.jpg",
                 "https://graph.org/file/a97973ee0425b523cdc28.jpg",
                 "resources/extras/puii_assistant.jpg",
             ]
@@ -355,33 +355,33 @@ async def customize():
             chat_id, "**Auto Customisation** Started on @Botfather"
         )
         await asyncio.sleep(1)
-        await puii_bot.send_message("botfather", "/cancel")
+        await EvoXD_bot.send_message("botfather", "/cancel")
         await asyncio.sleep(1)
-        await puii_bot.send_message("botfather", "/setuserpic")
+        await EvoXD_bot.send_message("botfather", "/setuserpic")
         await asyncio.sleep(1)
-        isdone = (await puii_bot.get_messages("botfather", limit=1))[0].text
+        isdone = (await EvoXD_bot.get_messages("botfather", limit=1))[0].text
         if isdone.startswith("Invalid bot"):
             LOGS.info("Error while trying to customise assistant, skipping...")
             return
-        await puii_bot.send_message("botfather", UL)
+        await EvoXd_bot.send_message("botfather", UL)
         await asyncio.sleep(1)
-        await puii_bot.send_file("botfather", file)
+        await EvoXD_bot.send_file("botfather", file)
         await asyncio.sleep(2)
-        await puii_bot.send_message("botfather", "/setabouttext")
+        await EvoXD_bot.send_message("botfather", "/setabouttext")
         await asyncio.sleep(1)
-        await puii_bot.send_message("botfather", UL)
+        await EvoXD_bot.send_message("botfather", UL)
         await asyncio.sleep(1)
-        await puii_bot.send_message(
+        await EvoXD_bot.send_message(
             "botfather", f"✨ Hello ✨!! I'm Assistant Bot of {sir}"
         )
         await asyncio.sleep(2)
-        await puii_bot.send_message("botfather", "/setdescription")
+        await EvoXD_bot.send_message("botfather", "/setdescription")
         await asyncio.sleep(1)
-        await puii_bot.send_message("botfather", UL)
+        await EvoXD_bot.send_message("botfather", UL)
         await asyncio.sleep(1)
-        await puii_bot.send_message(
+        await EvoXD_bot.send_message(
             "botfather",
-            f"✨ Powerful Puii Assistant Bot ✨\n✨ Master ~ {sir} ✨\n\n✨ Powered By ~ @AellyXD ✨",
+            f"✨ Powerful EvoXD Assistant Bot ✨\n✨ Master ~ {sir} ✨\n\n✨ Powered By ~ @EvoXpro ✨",
         )
         await asyncio.sleep(2)
         await msg.edit("Completed **Auto Customisation** at @BotFather.")
@@ -393,10 +393,10 @@ async def customize():
 
 
 async def plug(plugin_channels):
-    from .. import puii_bot
+    from .. import EvoXD_bot
     from .utils import load_addons
 
-    if puii_bot._bot:
+    if EvoXD_bot._bot:
         LOGS.info("Plugin Channels can't be used in 'BOTMODE'")
         return
     if os.path.exists("addons") and not os.path.exists("addons/.git"):
@@ -405,12 +405,12 @@ async def plug(plugin_channels):
         os.mkdir("addons")
     if not os.path.exists("addons/__init__.py"):
         with open("addons/__init__.py", "w") as f:
-            f.write("from plugins import *\n\nbot = puii_bot")
+            f.write("from plugins import *\n\nbot = EvoXD_bot")
     LOGS.info("• Loading Plugins from Plugin Channel(s) •")
     for chat in plugin_channels:
         LOGS.info(f"{'•'*4} {chat}")
         try:
-            async for x in puii_bot.iter_messages(
+            async for x in EvoXD_bot.iter_messages(
                 chat, search=".py", filter=InputMessagesFilterDocument, wait_time=10
             ):
                 plugin = "addons/" + x.file.name.replace("_", "-").replace("|", "-")
@@ -422,7 +422,7 @@ async def plug(plugin_channels):
                     try:
                         load_addons(plugin)
                     except Exception as e:
-                        LOGS.info(f"Puii - PLUGIN_CHANNEL - ERROR - {plugin}")
+                        LOGS.info(f"EvoXD - PLUGIN_CHANNEL - ERROR - {plugin}")
                         LOGS.exception(e)
                         os.remove(plugin)
         except Exception as er:
@@ -441,7 +441,7 @@ async def fetch_ann():
 
     try:
         updts = await async_searcher(
-            "https://ultroid-api.vercel.app/announcements", post=True, re_json=True
+            "https://EvoXD-api.vercel.app/announcements", post=True, re_json=True
         )
         for upt in updts:
             key = list(upt.keys())[0]
@@ -467,23 +467,23 @@ async def fetch_ann():
 
 
 async def ready():
-    from .. import asst, udB, puii_bot
+    from .. import asst, udB, EvoXD_bot
 
     chat_id = udB.get_key("LOG_CHANNEL")
     spam_sent = None
     if not udB.get_key("INIT_DEPLOY"):  # Detailed Message at Initial Deploy
-        MSG = """🎇 **Thanks for Deploying Puii Userbot!**
+        MSG = """🎇 **Thanks for Deploying EvoXD Userbot!**
 • Here, are the Some Basic stuff from, where you can Know, about its Usage."""
-        PHOTO = "https://graph.org/file/08c6b87d3c9257d63438c.jpg"
+        PHOTO = "https://graph.org/file/a0df3b90c174b5948abfb.jpg"
         BTTS = Button.inline("• Click to Start •", "initft_2")
         udB.set_key("INIT_DEPLOY", "Done")
     else:
-        MSG = f"**Puii has been deployed!**\n➖➖➖➖➖➖➖➖➖➖\n**UserMode**: {inline_mention(puii_bot.me)}\n**Assistant**: @{asst.me.username}\n➖➖➖➖➖➖➖➖➖➖\n**Support**: @AellyXD\n➖➖➖➖➖➖➖➖➖➖"
+        MSG = f"**EvoXD has been deployed!**\n➖➖➖➖➖➖➖➖➖➖\n**UserMode**: {inline_mention(EvoXD_bot.me)}\n**Assistant**: @{asst.me.username}\n➖➖➖➖➖➖➖➖➖➖\n**Support**: @About_EvoXpro_Owner\n➖➖➖➖➖➖➖➖➖➖"
         BTTS, PHOTO = None, None
         prev_spam = udB.get_key("LAST_UPDATE_LOG_SPAM")
         if prev_spam:
             try:
-                await puii_bot.delete_messages(chat_id, int(prev_spam))
+                await EvoXD_bot.delete_messages(chat_id, int(prev_spam))
             except Exception as E:
                 LOGS.info("Error while Deleting Previous Update Message :" + str(E))
         if await updater():
@@ -493,14 +493,14 @@ async def ready():
         spam_sent = await asst.send_message(chat_id, MSG, file=PHOTO, buttons=BTTS)
     except ValueError as e:
         try:
-            await (await puii_bot.send_message(chat_id, str(e))).delete()
+            await (await EvoXD_bot.send_message(chat_id, str(e))).delete()
             spam_sent = await asst.send_message(chat_id, MSG, file=PHOTO, buttons=BTTS)
         except Exception as g:
             LOGS.info(g)
     except Exception as el:
         LOGS.info(el)
         try:
-            spam_sent = await puii_bot.send_message(chat_id, MSG)
+            spam_sent = await EvoXD_bot.send_message(chat_id, MSG)
         except Exception as ef:
             LOGS.exception(ef)
     if spam_sent and not spam_sent.media:
@@ -512,11 +512,11 @@ async def WasItRestart(udb):
     key = udb.get_key("_RESTART")
     if not key:
         return
-    from .. import asst, puii_bot
+    from .. import asst, EvoXD_bot
 
     try:
         data = key.split("_")
-        who = asst if data[0] == "bot" else puii_bot
+        who = asst if data[0] == "bot" else EvoXD_bot
         await who.edit_message(
             int(data[1]), int(data[2]), "__Restarted Successfully.__"
         )
@@ -548,11 +548,11 @@ def _version_changes(udb):
             udb.set_key(_, new_)
 
 
-async def enable_inline(puii_bot, username):
+async def enable_inline(EvoXD_bot, username):
     bf = "BotFather"
-    await puii_bot.send_message(bf, "/setinline")
+    await EvoXD_bot.send_message(bf, "/setinline")
     await asyncio.sleep(1)
-    await puii_bot.send_message(bf, f"@{username}")
+    await EvoXD_bot.send_message(bf, f"@{username}")
     await asyncio.sleep(1)
-    await puii_bot.send_message(bf, "Search")
-    await puii_bot.send_read_acknowledge(bf)
+    await EvoXD_bot.send_message(bf, "Search")
+    await EvoXD_bot.send_read_acknowledge(bf)
