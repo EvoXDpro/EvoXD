@@ -23,7 +23,7 @@ from ..configs import Var
 from . import *
 
 
-class PuiiClient(TelegramClient):
+class EvoXDClient(TelegramClient):
     def __init__(
         self,
         session,
@@ -51,7 +51,7 @@ class PuiiClient(TelegramClient):
         self.dc_id = self.session.dc_id
 
     def __repr__(self):
-        return "<Puii.Client :\n self: {}\n bot: {}\n>".format(
+        return "<EvoXD.Client :\n self: {}\n bot: {}\n>".format(
             self.full_name, self._bot
         )
 
@@ -130,8 +130,8 @@ class PuiiClient(TelegramClient):
                         except FileNotFoundError:
                             pass
                     return files["raw_file"], time.time() - start_time
-        from pyPuii.fns.FastTelethon import upload_file
-        from pyPuii.fns.helper import progress
+        from pyEvoXD.fns.FastTelethon import upload_file
+        from pyEvoXD.fns.helper import progress
 
         raw_file = None
         while not raw_file:
@@ -180,8 +180,8 @@ class PuiiClient(TelegramClient):
 
         from telethon.tl.types import DocumentAttributeFilename
 
-        from pyPuii.fns.FastTelethon import download_file
-        from pyPuii.fns.helper import progress
+        from pyEvoXD.fns.FastTelethon import download_file
+        from pyEvoXD.fns.helper import progress
 
         start_time = time.time()
         # Auto-generate Filename
