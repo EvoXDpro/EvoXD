@@ -8,16 +8,16 @@
 from telethon import Button, custom
 
 from plugins import ATRA_COL, InlinePlugin
-from pyPuii import *
-from pyPuii import _ult_cache
-from pyPuii._misc import owner_and_sudos
-from pyPuii._misc._assistant import asst_cmd, callback, in_pattern
-from pyPuii.fns.helper import *
-from pyPuii.fns.tools import get_stored_file
+from pyEvoXD import *
+from pyEvoXD import _ult_cache
+from pyEvoXD._misc import owner_and_sudos
+from pyEvoXD._misc._assistant import asst_cmd, callback, in_pattern
+from pyEvoXD.fns.helper import *
+from pyEvoXD.fns.tools import get_stored_file
 from strings import get_languages, get_string
 
-OWNER_NAME = puii_bot.full_name
-OWNER_ID = puii_bot.uid
+OWNER_NAME = EvoXD_bot.full_name
+OWNER_ID = EvoXD_bot.uid
 
 AST_PLUGINS = {}
 
