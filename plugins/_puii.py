@@ -11,29 +11,29 @@ from telethon.errors import (
     ChatSendMediaForbiddenError,
 )
 
-from . import LOG_CHANNEL, LOGS, Button, asst, eor, get_string, puii_cmd
+from . import LOG_CHANNEL, LOGS, Button, asst, eor, get_string, EvoXD_cmd
 
 REPOMSG = """
-• **PUII USERBOT** •\n
+• **EVOXD USERBOT** •\n
 
-• Addons - [Click Here](https://github.com/AellyXD/PuiiAddons)
-• Support - @puiisupport
+• Addons - [Click Here](https://github.com/EvoXDpro/PuiiAddons)
+• Support - @EvoXpro
 """
 
 RP_BUTTONS = [
     [
-        Button.url(get_string("bot_3"), "https://github.com/AellyXD/Puii"),
-        Button.url("Addons", "https://github.com/AellyXD/Puiiaddons"),
+        Button.url(get_string("bot_3"), "https://github.com/EvoXDpro/Puii"),
+        Button.url("Addons", "https://github.com/EvoXDpro/Puiiaddons"),
     ],
-    [Button.url("Support Group", "t.me/PuiiSupport")],
+    [Button.url("Support Group", "t.me/EvoXpro")],
 ]
 
-ULTSTRING = """🎇 **Thanks for Deploying Puii Userbot!**
+ULTSTRING = """🎇 **Thanks for Deploying EvoXD Userbot!**
 
 • Here, are the Some Basic stuff from, where you can Know, about its Usage."""
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="repo$",
     manager=True,
 )
@@ -53,13 +53,13 @@ async def repify(e):
     await e.eor(REPOMSG)
 
 
-@puii_cmd(pattern="puii$")
+@EvoXD_cmd(pattern="pEvoXD$")
 async def usePuii(rs):
     button = Button.inline("Start >>", "initft_2")
     msg = await asst.send_message(
         LOG_CHANNEL,
         ULTSTRING,
-        file="https://graph.org/file/4841c1a78db59c3f3c09a.jpg",
+        file="https://graph.org/file/a0df3b90c174b5948abfb.jpg",
         buttons=button,
     )
     if not (rs.chat_id == LOG_CHANNEL and rs.client._bot):
