@@ -10,28 +10,28 @@ import re
 from . import *
 
 STRINGS = {
-    1: """🎇 **Thanks for Deploying Ultroid Userbot!**
+    1: """🎇 **Thanks for Deploying EvoXD Userbot!**
 
 • Here, are the Some Basic stuff from, where you can Know, about its Usage.""",
-    2: """🎉** About Ultroid**
+    2: """🎉** About EvoXD**
 
 🧿 Ultroid is Pluggable and powerful Telethon Userbot, made in Python from Scratch. It is Aimed to Increase Security along with Addition of Other Useful Features.
 
-❣ Made by **@AellyXD**""",
+❣ Made by **@EvoXpro**""",
     3: """**💡• FAQs •**
 
--> [Username Tracker](https://t.me/AellyXD/8)
--> [Keeping Custom Addons Repo](https://AellyXD/9)
--> [Disabling Deploy message](https://t.me/AellyXD/10)
+-> [Username Tracker](https://t.me/Evoxdpro/7)
+-> [Keeping Custom Addons Repo](https://t.me/Evoxdpro/8)
+-> [Disabling Deploy message](https://t.me/Evoxdpro/9)
 
 **• To Know About Updates**
-  - Join @AellyXD.""",
+  - Join @Evoxdpro.""",
     4: f"""• `To Know All Available Commands`
 
   - `{HNDLR}help`
   - `{HNDLR}cmds`""",
     5: """• **For Any Other Query or Suggestion**
-  - Move to **@AellyXD**.
+  - Move to **@Evoxdpro**.
 
 • Thanks for Reaching till END.""",
 }
