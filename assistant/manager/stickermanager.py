@@ -18,8 +18,8 @@ from telethon.tl.types import InputStickerSetItem as SetItem
 from telethon.tl.types import InputStickerSetShortName, User
 from telethon.utils import get_display_name, get_input_document
 
-from pyPuii.fns.misc import Quotly
-from pyPuii.fns.tools import TgConverter
+from pyEvoXD.fns.misc import Quotly
+from pyEvoXD.fns.tools import TgConverter
 
 from . import LOGS, asst, asst_cmd, udB
 
@@ -97,7 +97,7 @@ async def kang_cmd(ult):
                     stickers=[SetItem(file, emoji=emoji)],
                     videos=video,
                     animated=animated,
-                    software="@AellyXD",
+                    software="@Evoxdpro",
                 )
             )
         except Exception as er:
