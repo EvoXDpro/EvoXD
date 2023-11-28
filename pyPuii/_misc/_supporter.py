@@ -16,19 +16,19 @@ from pathlib import Path
 
 from telethon import events, types
 
-from pyPuii._misc._decorators import compile_pattern, puii_cmd
-from pyPuii._misc._wrappers import eod, eor
+from pyEvoXD._misc._decorators import compile_pattern, EvoXD_cmd
+from pyEvoXD._misc._wrappers import eod, eor
 
 from .. import *
 from ..dB._core import LIST
 from . import CMD_HELP, SUDO_M  # ignore: pylint
 
-ALIVE_NAME = puii_bot.me.first_name
+ALIVE_NAME = EvoXD_bot.me.first_name
 BOTLOG_CHATID = BOTLOG = udB.get_key("LOG_CHANNEL")
 
 
-bot = borg = catub = friday = puii_bot
-catub.cat_cmd = puii_cmd
+bot = borg = catub = friday = EvoXD_bot
+catub.cat_cmd = EvoXD_cmd
 
 black_list_chats = udB.get_key("BLACKLIST_CHATS")
 
@@ -87,7 +87,7 @@ class Config((object)):
         )
         TEMP_DOWNLOAD_DIRECTORY = TMP_DOWNLOAD_DIRECTORY
         TEMP_DIR = TMP_DOWNLOAD_DIRECTORY
-        TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "Puii")
+        TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "EvoXD")
         OCR_SPACE_API_KEY = os.environ.get("OCR_SPACE_API_KEY", None)
         TG_BOT_USER_NAME_BF_HER = asst.me.username
         UB_BLACK_LIST_CHAT = [
