@@ -35,9 +35,9 @@ from telethon.errors.rpcerrorlist import (
 from telethon.events import Raw
 from telethon.tl.types import InputMediaPoll, Poll, PollAnswer, UpdateMessagePollVote
 
-from pyPuii._misc._decorators import puii_cmd
-from pyPuii.fns.helper import inline_mention
-from pyPuii.fns.tools import async_searcher
+from pyEvoXD._misc._decorators import EvoXD_cmd
+from pyEvoXD.fns.helper import inline_mention
+from pyEvoXD.fns.tools import async_searcher
 
 from . import *
 
@@ -47,7 +47,7 @@ games = {}
 aki_photo = "https://graph.org/file/3cc8825c029fd0cab9edc.jpg"
 
 
-@puii_cmd(pattern="akinator")
+@EvoXD_cmd(pattern="akinator")
 async def akina(e):
     if not akinator:
         return
@@ -267,7 +267,7 @@ async def choose_cata(event):
                     close_period=int(in_),
                 ),
                 correct_answers=[ansi],
-                solution="Join @AellyXD",
+                solution="Join @About_EvoXpro_Owner",
                 solution_entities=[],
             )
             m_ = await event.client.send_message(chat, file=poll)
