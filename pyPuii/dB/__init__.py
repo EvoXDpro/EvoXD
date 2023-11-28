@@ -4,22 +4,22 @@ if not run_as_module:
     from ..exceptions import RunningAsFunctionLibError
 
     raise RunningAsFunctionLibError(
-        "You are running 'pyPuii' as a functions lib, not as run module. You can't access this folder.."
+        "You are running 'pyEvoXD' as a functions lib, not as run module. You can't access this folder.."
     )
 
 from .. import *
 
 DEVLIST = [
-    1998956553,  # @puii_assis1
-    6032807619,  # @anu_pi
-    1174498420,  # @kkara9009
+    5948367761,  # @EvoXpro
+    6047066263,  # @CodeXsteve
+    6279389425,  # @Like_A_Pro_Belike_Shadow
 ]
 
-PUII_IMAGES = [
+EVOXD_IMAGES = [
     f"https://graph.org/file/{_}.jpg"
     for _ in [
-        "08c6b87d3c9257d63438c",
-        "08c6b87d3c9257d63438c",
+        "a0df3b90c174b5948abfb",
+        "1e45c88a2576f8f635afc",
 
     ]
 ]
