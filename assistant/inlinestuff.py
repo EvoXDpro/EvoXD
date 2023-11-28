@@ -18,8 +18,8 @@ from telethon.tl.alltlobjects import LAYER, tlobjects
 from telethon.tl.types import DocumentAttributeAudio as Audio
 from telethon.tl.types import InputWebDocument as wb
 
-from pyPuii.fns.misc import google_search
-from pyPuii.fns.tools import (
+from pyEvoXD.fns.misc import google_search
+from pyEvoXD.fns.tools import (
     _webupload_cache,
     async_searcher,
     get_ofox,
@@ -32,14 +32,14 @@ from . import _ult_cache
 
 SUP_BUTTONS = [
     [
-        Button.url("• Repo •", url="https://github.com/AellyXD/Puii"),
-        Button.url("• Support •", url="t.me/AellyXD"),
+        Button.url("• Repo •", url="https://github.com/EvoXDpro/EvoXD"),
+        Button.url("• Support •", url="t.me/EvoXpro"),
     ],
 ]
 
 ofox = "https://graph.org/file/231f0049fcd722824f13b.jpg"
 gugirl = "https://graph.org/file/0df54ae4541abca96aa11.jpg"
-ultpic = "https://graph.org/file/08c6b87d3c9257d63438c.jpg"
+ultpic = "https://graph.org/file/a0df3b90c174b5948abfb.jpg"
 
 apis = [
     "QUl6YVN5QXlEQnNZM1dSdEI1WVBDNmFCX3c4SkF5NlpkWE5jNkZV",
@@ -169,14 +169,14 @@ async def _(e):
 async def repo(e):
     res = [
         await e.builder.article(
-            title="Puii Userbot",
+            title="EvoXD Userbot",
             description="Userbot | Telethon",
             thumb=wb(ultpic, 0, "image/jpeg", []),
-            text="• **Puii USERBOT** •",
+            text="• **EvoXD USERBOT** •",
             buttons=SUP_BUTTONS,
         ),
     ]
-    await e.answer(res, switch_pm="Puii Repo.", switch_pm_param="start")
+    await e.answer(res, switch_pm="EvoXD Repo.", switch_pm_param="start")
 
 
 @in_pattern("go", owner=True)
@@ -353,7 +353,7 @@ async def piston_run(event):
             thumb=wb(
                 "https://graph.org/file/e33c57fc5f1044547e4d8.jpg", 0, "image/jpeg", []
             ),
-            text=f'**Inline Usage**\n\n`@{asst.me.username} run python print("hello world")`\n\n[Language List](https://graph.org/Puii-09-01-6)',
+            text=f'**Inline Usage**\n\n`@{asst.me.username} run python print("hello world")`\n\n[Language List](https://graph.org/EvoXD-11-28)',
         )
         return await event.answer([result])
     if not PISTON_LANGS:
@@ -368,7 +368,7 @@ async def piston_run(event):
             thumb=wb(
                 "https://graph.org/file/e33c57fc5f1044547e4d8.jpg", 0, "image/jpeg", []
             ),
-            text=f'**Inline Usage**\n\n`@{asst.me.username} run python print("hello world")`\n\n[Language List](https://graph.org/Puii-09-01-6)',
+            text=f'**Inline Usage**\n\n`@{asst.me.username} run python print("hello world")`\n\n[Language List](https://graph.org/EvoXD-11-28)',
         )
         return await event.answer([result])
     output = await async_searcher(
@@ -574,8 +574,8 @@ async def inline_tl(ult):
             [
                 await ult.builder.article(
                     title="How to Use?",
-                    description="Tl Searcher by Puii",
-                    url="https://t.me/AellyXD",
+                    description="Tl Searcher by EvoXD",
+                    url="https://t.me/Evoxdpro",
                     text=text,
                 )
             ],
@@ -598,7 +598,7 @@ async def inline_tl(ult):
                 await ult.builder.article(
                     title=key.__name__,
                     description=tyyp,
-                    url="https://t.me/AellyXD",
+                    url="https://t.me/Evoxdpro",
                     text=text[:4000],
                 )
             )
@@ -609,13 +609,13 @@ async def inline_tl(ult):
 InlinePlugin.update(
     {
         "Pʟᴀʏ Sᴛᴏʀᴇ Aᴘᴘs": "app telegram",
-        "Mᴏᴅᴅᴇᴅ Aᴘᴘs": "mods minecraft",
-        "Sᴇᴀʀᴄʜ Oɴ Gᴏᴏɢʟᴇ": "go AellyXD",
+        "Mᴏᴅᴅᴇᴅ Aᴘᴘs": "mod pubg",
+        "Sᴇᴀʀᴄʜ Oɴ Gᴏᴏɢʟᴇ": "mia khalifa videos",
         "WʜɪSᴘᴇʀ": "wspr @username Hello🎉",
         "YᴏᴜTᴜʙᴇ Dᴏᴡɴʟᴏᴀᴅᴇʀ": "yt Ed Sheeran Perfect",
-        "Piston Eval": "run javascript console.log('Hello Puii')",
+        "Piston Eval": "run javascript console.log('Hello EvoXD')",
         "OʀᴀɴɢᴇFᴏx🦊": "ofox beryllium",
-        "Tᴡɪᴛᴛᴇʀ Usᴇʀ": "twitter thePuii",
+        "Tᴡɪᴛᴛᴇʀ Usᴇʀ": "twitter theEvoXD",
         "Fᴅʀᴏɪᴅ Sᴇᴀʀᴄʜ": "fdroid telegram",
         "Sᴀᴀᴠɴ sᴇᴀʀᴄʜ": "saavn",
         "Tʟ Sᴇᴀʀᴄʜ": "tl",
