@@ -20,7 +20,7 @@ from telethon.errors.rpcerrorlist import (
 from telethon.tl.types import MessageEntityMention, MessageEntityMentionName, User
 from telethon.utils import get_display_name
 
-from pyPuii.dB.botchat_db import tag_add, who_tag
+from pyEvoXD.dB.botchat_db import tag_add, who_tag
 
 from . import (
     LOG_CHANNEL,
@@ -32,14 +32,14 @@ from . import (
     get_string,
     inline_mention,
     udB,
-    puii_bot,
+    EvoXD_bot,
 )
 
 CACHE_SPAM = {}
 TAG_EDITS = {}
 
 
-@puii_bot.on(
+@EvoXD_bot.on(
     events.NewMessage(
         incoming=True,
         func=lambda e: (e.mentioned),
@@ -113,7 +113,7 @@ async def all_messages_catcher(e):
 
 if udB.get_key("TAG_LOG"):
 
-    @puii_bot.on(events.MessageEdited(func=lambda x: not x.out))
+    @EvoXD_bot.on(events.MessageEdited(func=lambda x: not x.out))
     async def upd_edits(event):
         x = event.sender
         if isinstance(x, User) and (x.bot or x.verified):
@@ -184,7 +184,7 @@ if udB.get_key("TAG_LOG"):
         except Exception as er:
             LOGS.exception(er)
 
-    @puii_bot.on(
+    @EvoXD_bot.on(
         events.NewMessage(
             outgoing=True,
             chats=[udB.get_key("TAG_LOG")],
@@ -196,7 +196,7 @@ if udB.get_key("TAG_LOG"):
         chat, msg = who_tag(id)
         if chat and msg:
             try:
-                await puii_bot.send_message(chat, e.message, reply_to=msg)
+                await EvoXD_bot.send_message(chat, e.message, reply_to=msg)
             except BaseException as er:
                 LOGS.exception(er)
 
@@ -230,18 +230,18 @@ async def when_added_or_joined(event):
 asst.add_event_handler(
     when_added_or_joined, events.ChatAction(func=lambda x: x.user_added)
 )
-puii_bot.add_event_handler(
+EvoXD_bot.add_event_handler(
     when_added_or_joined,
     events.ChatAction(func=lambda x: x.user_added or x.user_joined),
 )
-_client = {"bot": asst, "user": puii_bot}
+_client = {"bot": asst, "user": EvoXD_bot}
 
 
 @callback(
     re.compile(
         "leave_ch_(.*)",
     ),
-    from_users=[puii_bot.uid],
+    from_users=[EvoXD_bot.uid],
 )
 async def leave_ch_at(event):
     cht = event.data_match.group(1).decode("UTF-8")
