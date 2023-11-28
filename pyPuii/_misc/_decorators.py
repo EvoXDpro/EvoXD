@@ -34,7 +34,7 @@ from telethon.errors.rpcerrorlist import (
 from telethon.events import MessageEdited, NewMessage
 from telethon.utils import get_display_name
 
-from pyPuii.exceptions import DependencyMissingError
+from pyEvoXD.exceptions import DependencyMissingError
 from strings import get_string
 
 from .. import *
@@ -45,7 +45,7 @@ from ..fns.admins import admin_check
 from ..fns.helper import bash
 from ..fns.helper import time_formatter as tf
 from ..version import __version__ as pyver
-from ..version import puii_version as ult_ver
+from ..version import EvoXD_version as ult_ver
 from . import SUDO_M, owner_and_sudos
 from ._wrappers import eod
 
@@ -66,8 +66,8 @@ def compile_pattern(data, hndlr):
     return re.compile("\\" + hndlr + data)
 
 
-def puii_cmd(
-    pattern=None, manager=False, puii_bot=puii_bot, asst=asst, **kwargs
+def EvoXD_cmd(
+    pattern=None, manager=False, EvoXD_bot=EvoXD_bot, asst=asst, **kwargs
 ):
     owner_only = kwargs.get("owner_only", False)
     groups_only = kwargs.get("groups_only", False)
@@ -115,9 +115,9 @@ def puii_cmd(
                     udB.get_key("LOG_CHANNEL"),
                     f"`FloodWaitError:\n{str(fwerr)}\n\nSleeping for {tf((fwerr.seconds + 10)*1000)}`",
                 )
-                await puii_bot.disconnect()
+                await EvoXD_bot.disconnect()
                 await asyncio.sleep(fwerr.seconds + 10)
-                await puii_bot.connect()
+                await EvoXD_bot.connect()
                 await asst.send_message(
                     udB.get_key("LOG_CHANNEL"),
                     "`Bot is working again`",
@@ -148,10 +148,10 @@ def puii_cmd(
                     udB.get_key("LOG_CHANNEL"),
                     "Session String expired, create new session from 👇",
                     buttons=[
-                        Button.url("Bot", "t.me/string_puiibot?start="),
+                        Button.url("Bot", "t.me/string_evobot?start="),
                         Button.url(
                             "Repl",
-                            "https://replit.com/@AellyXD/UltroidStringSession",
+                            "https://replit.com/@EvoXpro/UltroidStringSession",
                         ),
                     ],
                 )
@@ -164,12 +164,12 @@ def puii_cmd(
                 LOGS.exception(e)
                 date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
                 naam = get_display_name(chat)
-                ftext = "**Puii Client Error:** `Forward this to` @AellyXD\n\n"
-                ftext += "**Py-Puii Version:** `" + str(pyver)
-                ftext += "`\n**Puii Version:** `" + str(ult_ver)
+                ftext = "**EvoXD Client Error:** `Forward this to` @EvoXpro\n\n"
+                ftext += "**Py-EvoXD Version:** `" + str(pyver)
+                ftext += "`\n**EvoXD Version:** `" + str(ult_ver)
                 ftext += "`\n**Telethon Version:** `" + str(telever)
                 ftext += f"`\n**Hosted At:** `{HOSTED_ON}`\n\n"
-                ftext += "--------START Puii CRASH LOG--------"
+                ftext += "--------START EᴠᴏXD CRASH LOG--------"
                 ftext += "\n**Date:** `" + date
                 ftext += "`\n**Group:** `" + str(ult.chat_id) + "` " + str(naam)
                 ftext += "\n**Sender ID:** `" + str(ult.sender_id)
@@ -180,7 +180,7 @@ def puii_cmd(
                 ftext += str(format_exc())
                 ftext += "`\n\n**Error text:**`\n"
                 ftext += str(sys.exc_info()[1])
-                ftext += "`\n\n--------END Puii CRASH LOG--------"
+                ftext += "`\n\n--------END EᴠᴏXD CRASH LOG--------"
                 ftext += "\n\n\n**Last 5 commits:**`\n"
 
                 stdout, stderr = await bash('git log --pretty=format:"%an: %s" -5')
@@ -194,7 +194,7 @@ def puii_cmd(
                         error_log = await asst.send_file(
                             udB.get_key("LOG_CHANNEL"),
                             file,
-                            caption="**Puii Client Error:** `Forward this to` @AellyXD\n\n",
+                            caption="**EvoXD Client Error:** `Forward this to` @EvoXpro\n\n",
                         )
                 else:
                     error_log = await asst.send_message(
@@ -218,7 +218,7 @@ def puii_cmd(
         if _add_new:
             if pattern:
                 cmd = compile_pattern(pattern, SUDO_HNDLR)
-            puii_bot.add_event_handler(
+            EvoXD_bot.add_event_handler(
                 wrapp,
                 NewMessage(
                     pattern=cmd,
@@ -231,7 +231,7 @@ def puii_cmd(
             )
         if pattern:
             cmd = compile_pattern(pattern, HNDLR)
-        puii_bot.add_event_handler(
+        EvoXD_bot.add_event_handler(
             wrapp,
             NewMessage(
                 outgoing=True if _add_new else None,
@@ -247,7 +247,7 @@ def puii_cmd(
             def func_(x):
                 return not x.via_bot_id and not (x.is_channel and x.chat.broadcast)
 
-            puii_bot.add_event_handler(
+            EvoXD_bot.add_event_handler(
                 wrapp,
                 MessageEdited(
                     pattern=cmd,
