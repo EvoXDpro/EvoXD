@@ -14,17 +14,17 @@ from telethon.errors import QueryIdInvalidError
 from telethon.events import CallbackQuery, InlineQuery, NewMessage
 from telethon.tl.types import InputWebDocument
 
-from .. import LOGS, asst, udB, puii_bot
+from .. import LOGS, asst, udB, EvoXD_bot
 from ..fns.admins import admin_check
 from . import append_or_update, owner_and_sudos
 
-OWNER = puii_bot.full_name
+OWNER = EvoXD_bot.full_name
 
 MSG = f"""
 **Puii - UserBot**
 ➖➖➖➖➖➖➖➖➖➖
-**Owner**: [{OWNER}](tg://user?id={puii_bot.uid})
-**Support**: @AellyXD
+**Owner**: [{OWNER}](tg://user?id={EvoXD_bot.uid})
+**Support**: @EvoXpro
 ➖➖➖➖➖➖➖➖➖➖
 """
 
@@ -32,9 +32,9 @@ IN_BTTS = [
     [
         Button.url(
             "Repository",
-            url="https://github.com/AellyXD/Puii",
+            url="https://github.com/EvoXDpro/EvoXD",
         ),
-        Button.url("Support", url="https://t.me/AellyXD"),
+        Button.url("Support", url="https://t.me/EvoXD"),
     ]
 ]
 
@@ -70,7 +70,7 @@ def callback(data=None, from_users=[], admins=False, owner=False, **kwargs):
     """Assistant's callback decorator"""
     if "me" in from_users:
         from_users.remove("me")
-        from_users.append(puii_bot.uid)
+        from_users.append(EvoXD_bot.uid)
 
     def ultr(func):
         async def wrapper(event):
@@ -98,12 +98,12 @@ def in_pattern(pattern=None, owner=False, **kwargs):
             if owner and event.sender_id not in owner_and_sudos():
                 res = [
                     await event.builder.article(
-                        title="Puii Userbot",
-                        url="https://t.me/AellyXD",
-                        description="(c) AellyXD",
+                        title="EvoXD Userbot",
+                        url="https://t.me/EvoXpro",
+                        description="(c) EvoXpro,
                         text=MSG,
                         thumb=InputWebDocument(
-                            "https://graph.org/file/08c6b87d3c9257d63438c.jpg",
+                            "https://graph.org/file/a0df3b90c174b5948abfb.jpg",
                             0,
                             "image/jpeg",
                             [],
@@ -134,7 +134,7 @@ def in_pattern(pattern=None, owner=False, **kwargs):
                                 title="Unhandled Exception has Occured!",
                                 text=error_text(),
                                 buttons=Button.url(
-                                    "Report", "https://t.me/AellyXD"
+                                    "Report", "https://t.me/EvoXpro"
                                 ),
                             )
                         ]
