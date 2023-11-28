@@ -8,16 +8,16 @@ import requests
 from telethon import Button, events
 from telethon.tl import functions, types  # pylint:ignore
 
-from pyPuii import *
-from pyPuii._misc._assistant import asst_cmd, callback, in_pattern
-from pyPuii._misc._decorators import puii_cmd
-from pyPuii._misc._wrappers import eod, eor
-from pyPuii.dB import DEVLIST, PUII_IMAGES
-from pyPuii.fns.helper import *
-from pyPuii.fns.misc import *
-from pyPuii.fns.tools import *
-from pyPuii.startup._database import _BaseDatabase as Database
-from pyPuii.version import __version__, puii_version
+from pyEvoXD import *
+from pyEvoXD._misc._assistant import asst_cmd, callback, in_pattern
+from pyEvoXD._misc._decorators import EvoXD_cmd
+from pyEvoXD._misc._wrappers import eod, eor
+from pyEvoXD.dB import DEVLIST, EvoXD_IMAGES
+from pyEvoXD.fns.helper import *
+from pyEvoXD.fns.misc import *
+from pyEvoXD.fns.tools import *
+from pyEvoXD.startup._database import _BaseDatabase as Database
+from pyEvoXD.version import __version__, EvoXD_version
 from strings import get_help, get_string
 
 udB: Database
@@ -25,11 +25,11 @@ udB: Database
 Redis = udB.get_key
 con = TgConverter
 quotly = Quotly()
-OWNER_NAME = puii_bot.full_name
-OWNER_ID = puii_bot.uid
+OWNER_NAME = EvoXD_bot.full_name
+OWNER_ID = EvoXD_bot.uid
 
-puii_bot: PuiiClient
-asst: PuiiClient
+EvoXD_bot: EvoXDClient
+asst: EvoXDClient
 
 LOG_CHANNEL = udB.get_key("LOG_CHANNEL")
 
@@ -37,7 +37,7 @@ LOG_CHANNEL = udB.get_key("LOG_CHANNEL")
 def inline_pic():
     INLINE_PIC = udB.get_key("INLINE_PIC")
     if INLINE_PIC is None:
-        INLINE_PIC = choice(PUII_IMAGES)
+        INLINE_PIC = choice(EVOXD_IMAGES)
     elif INLINE_PIC == False:
         INLINE_PIC = None
     return INLINE_PIC
@@ -49,7 +49,7 @@ List = []
 Dict = {}
 InlinePlugin = {}
 N = 0
-cmd = puii_cmd
+cmd = EvoXD_cmd
 STUFF = {}
 
 # Chats, which needs to be ignore for some cases
