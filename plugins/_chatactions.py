@@ -12,24 +12,24 @@ from telethon.errors.rpcerrorlist import UserNotParticipantError
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.utils import get_display_name
 
-from pyPuii.dB import stickers
-from pyPuii.dB.echo_db import check_echo
-from pyPuii.dB.forcesub_db import get_forcesetting
-from pyPuii.dB.gban_mute_db import is_gbanned
-from pyPuii.dB.greetings_db import get_goodbye, get_welcome, must_thank
-from pyPuii.dB.nsfw_db import is_profan
-from pyPuii.fns.helper import inline_mention
-from pyPuii.fns.tools import async_searcher, create_tl_btn, get_chatbot_reply
+from pyEvoXD.dB import stickers
+from pyEvoXD.dB.echo_db import check_echo
+from pyEvoXD.dB.forcesub_db import get_forcesetting
+from pyEvoXD.dB.gban_mute_db import is_gbanned
+from pyEvoXD.dB.greetings_db import get_goodbye, get_welcome, must_thank
+from pyEvoXD.dB.nsfw_db import is_profan
+from pyEvoXD.fns.helper import inline_mention
+from pyEvoXD.fns.tools import async_searcher, create_tl_btn, get_chatbot_reply
 
 try:
     from ProfanityDetector import detector
 except ImportError:
     detector = None
-from . import LOG_CHANNEL, LOGS, asst, get_string, types, udB, puii_bot
+from . import LOG_CHANNEL, LOGS, asst, get_string, types, udB, EvoXD_bot
 from ._inline import something
 
 
-@puii_bot.on(events.ChatAction())
+@EvoXD_bot.on(events.ChatAction())
 async def Function(event):
     try:
         await DummyHandler(event)
@@ -63,12 +63,12 @@ async def DummyHandler(ult):
         if not user.bot:
             joinchat = get_forcesetting(ult.chat_id)
             try:
-                await puii_bot(GetParticipantRequest(int(joinchat), user.id))
+                await EvoXD_bot(GetParticipantRequest(int(joinchat), user.id))
             except UserNotParticipantError:
-                await puii_bot.edit_permissions(
+                await EvoXD_bot.edit_permissions(
                     ult.chat_id, user.id, send_messages=False
                 )
-                res = await puii_bot.inline_query(
+                res = await EvoXD_bot.inline_query(
                     asst.me.username, f"fsub {user.id}_{joinchat}"
                 )
                 await res[0].click(ult.chat_id, reply_to=ult.action_message.id)
@@ -76,11 +76,11 @@ async def DummyHandler(ult):
     if ult.user_joined or ult.added_by:
         user = await ult.get_user()
         chat = await ult.get_chat()
-        # gbans and @puiiBans checks
-        if udB.get_key("PUII_BANS"):
+        # gbans and @EvoXDBans checks
+        if udB.get_key("EVOXD_BANS"):
             try:
                 is_banned = await async_searcher(
-                    "https://t.me/puiibans",
+                    "https://t.me/evobans",
                     json={"userId": user.id},
                     post=True,
                     re_json=True,
@@ -92,7 +92,7 @@ async def DummyHandler(ult):
                         view_messages=False,
                     )
                     await ult.respond(
-                        f'**@puiiBans:** Banned user detected and banned!\n`{str(is_banned)}`.\nBan reason: {is_banned["reason"]}',
+                        f'**@EvoXDBans:** Banned user detected and banned!\n`{str(is_banned)}`.\nBan reason: {is_banned["reason"]}',
                     )
 
             except BaseException:
@@ -193,7 +193,7 @@ async def DummyHandler(ult):
             await ult.reply(file=med)
 
 
-@puii_bot.on(events.NewMessage(incoming=True))
+@EvoXD_bot.on(events.NewMessage(incoming=True))
 async def chatBot_replies(e):
     sender = await e.get_sender()
     if not isinstance(sender, types.User) or sender.bot:
@@ -221,7 +221,7 @@ async def chatBot_replies(e):
             await e.delete()
 
 
-@puii_bot.on(events.Raw(types.UpdateUserName))
+@EvoXD_bot.on(events.Raw(types.UpdateUserName))
 async def uname_change(e):
     await uname_stuff(e.user_id, e.usernames[0] if e.usernames else None, e.first_name)
 
