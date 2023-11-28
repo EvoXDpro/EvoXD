@@ -10,8 +10,8 @@ import random
 
 import aiohttp
 
-from pyPuii.dB import DEVLIST
-from pyPuii.fns.admins import admin_check
+from pyEvoXD.dB import DEVLIST
+from pyEvoXD.fns.admins import admin_check
 
 from . import *
 
