@@ -542,19 +542,19 @@ def telegraph_client():
     if TELEGRAPH:
         return TELEGRAPH[0]
 
-    from .. import udB, puii_bot
+    from .. import udB, EvoXD_bot
 
     token = udB.get_key("_TELEGRAPH_TOKEN")
     TelegraphClient = Telegraph(token)
     if token:
         TELEGRAPH.append(TelegraphClient)
         return TelegraphClient
-    gd_name = puii_bot.full_name
+    gd_name = EvoXD_bot.full_name
     short_name = gd_name[:30]
     profile_url = (
-        f"https://t.me/{puii_bot.me.username}"
+        f"https://t.me/{EvoXD_bot.me.username}"
         if puii_bot.me.username
-        else "https://t.me/AellyXD"
+        else "https://t.me/EvoXpro"
     )
     try:
         TelegraphClient.create_account(
@@ -563,7 +563,7 @@ def telegraph_client():
     except Exception as er:
         if "SHORT_NAME_TOO_LONG" in str(er):
             TelegraphClient.create_account(
-                short_name="puiiuser", author_name=gd_name, author_url=profile_url
+                short_name="EvoXDuser", author_name=gd_name, author_url=profile_url
             )
         else:
             LOGS.exception(er)
@@ -586,7 +586,7 @@ def make_html_telegraph(title, html=""):
 async def Carbon(
     code,
     base_url = "https://carbonara.solopov.dev/api/cook",
-    file_name="puii",
+    file_name="EvoXD",
     download=False,
     rayso=False,
     **kwargs,
@@ -596,7 +596,7 @@ async def Carbon(
         kwargs["text"] = code
         kwargs["theme"] = kwargs.get("theme", "breeze")
         kwargs["darkMode"] = kwargs.get("darkMode", True)
-        kwargs["title"] = kwargs.get("title", "Puii")
+        kwargs["title"] = kwargs.get("title", "EvoXD")
     else:
         kwargs["code"] = code
     con = await async_searcher(base_url, post=True, json=kwargs, re_content=True)
