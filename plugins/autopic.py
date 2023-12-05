@@ -13,15 +13,15 @@ from random import shuffle
 
 from telethon.tl.functions.photos import UploadProfilePhotoRequest
 
-from pyPuii.fns.helper import download_file
-from pyPuii.fns.tools import get_google_images
+from pyEvoXD.fns.helper import download_file
+from pyEvoXD.fns.tools import get_google_images
 
-from . import LOGS, get_help, get_string, udB, puii_bot, puii_cmd
+from . import LOGS, get_help, get_string, udB, EvoXD_bot, EvoXDi_cmd
 
 __doc__ = get_help("help_autopic")
 
 
-@puii_cmd(pattern="autopic( (.*)|$)")
+@EvoXD_cmd(pattern="autopic( (.*)|$)")
 async def autopic(e):
     search = e.pattern_match.group(1).strip()
     if udB.get_key("AUTOPIC") and not search:
@@ -70,8 +70,8 @@ if search := udB.get_key("AUTOPIC"):
             return
         img = random.choice(images[search])
         filee = await download_file(img["original"], "resources/downloads/autopic.jpg")
-        file = await puii_bot.upload_file(filee)
-        await puii_bot(UploadProfilePhotoRequest(file))
+        file = await EvoXD_bot.upload_file(filee)
+        await EvoXD_bot(UploadProfilePhotoRequest(file))
         os.remove(filee)
 
     try:
