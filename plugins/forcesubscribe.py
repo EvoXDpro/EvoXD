@@ -33,7 +33,7 @@ from telethon.tl.types import (
     User,
 )
 
-from pyPuii.dB.forcesub_db import add_forcesub, get_forcesetting, rem_forcesub
+from pyEvoXD.dB.forcesub_db import add_forcesub, get_forcesetting, rem_forcesub
 
 from . import (
     LOGS,
@@ -44,14 +44,14 @@ from . import (
     in_pattern,
     inline_mention,
     udB,
-    puii_bot,
-    puii_cmd,
+    EvoXD_bot,
+    EvoXD_cmd,
 )
 
 CACHE = {}
 
 
-@puii_cmd(pattern="fsub( (.*)|$)", admins_only=True, groups_only=True)
+@EvoXD_cmd(pattern="fsub( (.*)|$)", admins_only=True, groups_only=True)
 async def addfor(e):
     match = e.pattern_match.group(1).strip()
     if not match:
@@ -62,10 +62,10 @@ async def addfor(e):
         return await e.eor(get_string("fsub_2"), time=5)
     add_forcesub(e.chat_id, match)
     await e.eor("Added ForceSub in This Chat !")
-    puii_bot.add_handler(force_sub, events.NewMessage(incoming=True))
+    EvoXD_bot.add_handler(force_sub, events.NewMessage(incoming=True))
 
 
-@puii_cmd(pattern="remfsub$")
+@EvoXD_cmd(pattern="remfsub$")
 async def remor(e):
     res = rem_forcesub(e.chat_id)
     if not res:
@@ -73,7 +73,7 @@ async def remor(e):
     await e.eor("Removed ForceSub...")
 
 
-@puii_cmd(pattern="checkfsub$")
+@EvoXD_cmd(pattern="checkfsub$")
 async def getfsr(e):
     res = get_forcesetting(e.chat_id)
     if not res:
@@ -86,14 +86,14 @@ async def getfsr(e):
 async def fcall(e):
     match = e.pattern_match.group(1).strip()
     spli = match.split("_")
-    user = await puii_bot.get_entity(int(spli[0]))
-    cl = await puii_bot.get_entity(int(spli[1]))
+    user = await EvoXD_bot.get_entity(int(spli[0]))
+    cl = await EvoXD_bot.get_entity(int(spli[1]))
     text = f"Hi {inline_mention(user)}, You Need to Join"
     text += f" {cl.title} in order to Chat in this Group."
     el = (
         f"https://t.me/{cl.username}"
         if cl.username
-        else (await puii_bot(ExportChatInviteRequest(cl))).link
+        else (await EvoXD_bot(ExportChatInviteRequest(cl))).link
     )
 
     res = [
@@ -116,7 +116,7 @@ async def diesoon(e):
     if e.sender_id != int(spli[0]):
         return await e.answer(get_string("fsub_7"), alert=True)
     try:
-        values = await puii_bot(GetParticipantRequest(int(spli[1]), int(spli[0])))
+        values = await EvoXD_bot(GetParticipantRequest(int(spli[1]), int(spli[0])))
         if isinstance(values.participant, ChannelParticipantLeft) or (
             isinstance(values.participant, ChannelParticipantBanned) and values.left
         ):
@@ -125,7 +125,7 @@ async def diesoon(e):
         return await e.answer(
             "Please Join That Channel !\nThen Click This Button !", alert=True
         )
-    await puii_bot.edit_permissions(
+    await EvoXD_bot.edit_permissions(
         e.chat_id, int(spli[0]), send_messages=True, until_date=None
     )
     await e.edit(get_string("fsub_8"))
@@ -152,28 +152,28 @@ async def force_sub(ult):
     if count in range(2, 11):
         return
     try:
-        await puii_bot.get_permissions(int(joinchat), user.id)
+        await EvoXD_bot.get_permissions(int(joinchat), user.id)
         return
     except UserNotParticipantError:
         pass
     if isinstance(user, Channel):
         try:
-            await puii_bot.edit_permissions(
+            await EvoXD_bot.edit_permissions(
                 ult.chat_id, user.id, view_messages=False
             )
             return
         except BaseException as er:
             LOGS.exception(er)
     try:
-        await puii_bot.edit_permissions(ult.chat_id, user.id, send_messages=False)
+        await EvoXD_bot.edit_permissions(ult.chat_id, user.id, send_messages=False)
     except ChatAdminRequiredError:
         return
     except Exception as e:
         await ult.delete()
         LOGS.info(e)
-    res = await puii_bot.inline_query(asst.me.username, f"fsub {user.id}_{joinchat}")
+    res = await EvoXD_bot.inline_query(asst.me.username, f"fsub {user.id}_{joinchat}")
     await res[0].click(ult.chat_id, reply_to=ult.id)
 
 
 if udB.get_key("FORCESUB"):
-    puii_bot.add_handler(force_sub, events.NewMessage(incoming=True))
+    EvoXD_bot.add_handler(force_sub, events.NewMessage(incoming=True))
