@@ -12,10 +12,10 @@
 """
 import os
 
-from . import bash, get_string, mediainfo, puii_cmd
+from . import bash, get_string, mediainfo, EvoXD_cmd
 
 
-@puii_cmd(pattern="glitch$")
+@EvoXD_cmd(pattern="glitch$")
 async def _(e):
     try:
         import glitch_me  # ignore :pylint
