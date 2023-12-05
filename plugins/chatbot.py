@@ -10,12 +10,12 @@ from . import get_help
 __doc__ = get_help("help_chatbot")
 
 
-from pyPuii.fns.tools import get_chatbot_reply
+from pyEvoXD.fns.tools import get_chatbot_reply
 
-from . import LOGS, eod, get_string, inline_mention, udB, puii_cmd
+from . import LOGS, eod, get_string, inline_mention, udB, EvoXD_cmd
 
 
-@puii_cmd(pattern="repai")
+@EvoXD_cmd(pattern="repai")
 async def im_lonely_chat_with_me(event):
     if event.reply_to:
         message = (await event.get_reply_message()).message
@@ -28,17 +28,17 @@ async def im_lonely_chat_with_me(event):
     await event.eor(reply_)
 
 
-@puii_cmd(pattern="addai")
+@EvoXD_cmd(pattern="addai")
 async def add_chatBot(event):
     await chat_bot_fn(event, type_="add")
 
 
-@puii_cmd(pattern="remai")
+@EvoXD_cmd(pattern="remai")
 async def rem_chatBot(event):
     await chat_bot_fn(event, type_="remov")
 
 
-@puii_cmd(pattern="listai")
+@EvoXD_cmd(pattern="listai")
 async def lister(event):
     key = udB.get_key("CHATBOT_USERS") or {}
     users = key.get(event.chat_id, [])
