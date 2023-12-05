@@ -12,10 +12,10 @@ __doc__ = get_help("help_cleanaction")
 
 from telethon.utils import get_display_name
 
-from . import get_string, udB, puii_cmd
+from . import get_string, udB, EvoXD_cmd
 
 
-@puii_cmd(pattern="addclean$", admins_only=True)
+@EvoXD_cmd(pattern="addclean$", admins_only=True)
 async def _(e):
     key = udB.get_key("CLEANCHAT") or []
     if e.chat_id in key:
@@ -25,7 +25,7 @@ async def _(e):
     await e.eor(get_string("clan_1"), time=5)
 
 
-@puii_cmd(pattern="remclean$")
+@EvoXD_cmd(pattern="remclean$")
 async def _(e):
     key = udB.get_key("CLEANCHAT") or []
     if e.chat_id in key:
@@ -34,7 +34,7 @@ async def _(e):
     await e.eor(get_string("clan_2"), time=5)
 
 
-@puii_cmd(pattern="listclean$")
+@EvoXD_cmd(pattern="listclean$")
 async def _(e):
     if k := udB.get_key("CLEANCHAT"):
         o = ""
