@@ -13,10 +13,10 @@ __doc__ = get_help("help_database")
 
 import re
 
-from . import Redis, eor, get_string, udB, puii_cmd
+from . import Redis, eor, get_string, udB, EvoXD_cmd
 
 
-@puii_cmd(pattern="setdb( (.*)|$)", fullsudo=True)
+@EvoXD_cmd(pattern="setdb( (.*)|$)", fullsudo=True)
 async def _(ult):
     match = ult.pattern_match.group(1).strip()
     if not match:
@@ -36,7 +36,7 @@ async def _(ult):
         await ult.eor(get_string("com_7"))
 
 
-@puii_cmd(pattern="deldb( (.*)|$)", fullsudo=True)
+@EvoXD_cmd(pattern="deldb( (.*)|$)", fullsudo=True)
 async def _(ult):
     key = ult.pattern_match.group(1).strip()
     if not key:
@@ -56,7 +56,7 @@ async def _(ult):
         await ult.eor(get_string("com_7"))
 
 
-@puii_cmd(pattern="rendb( (.*)|$)", fullsudo=True)
+@EvoXD_cmd(pattern="rendb( (.*)|$)", fullsudo=True)
 async def _(ult):
     match = ult.pattern_match.group(1).strip()
     if not match:
