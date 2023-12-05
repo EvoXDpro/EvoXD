@@ -28,10 +28,10 @@ import random
 import time
 from datetime import datetime as dt
 
-from . import HNDLR, LOGS, bash, downloader, get_string, mediainfo, puii_cmd
+from . import HNDLR, LOGS, bash, downloader, get_string, mediainfo, EvoXD_cmd
 
 
-@puii_cmd(pattern="(bw|invert)gif$")
+@EvoXD_cmd(pattern="(bw|invert)gif$")
 async def igif(e):
     match = e.pattern_match.group(1).strip()
     a = await e.get_reply_message()
@@ -56,7 +56,7 @@ async def igif(e):
         LOGS.info(er)
 
 
-@puii_cmd(pattern="rvgif$")
+@EvoXD_cmd(pattern="rvgif$")
 async def reverse_gif(event):
     a = await event.get_reply_message()
     if not (a and a.media) and "video" not in mediainfo(a.media):
@@ -70,7 +70,7 @@ async def reverse_gif(event):
     os.remove("reversed.mp4")
 
 
-@puii_cmd(pattern="gif( (.*)|$)")
+@EvoXD_cmd(pattern="gif( (.*)|$)")
 async def gifs(ult):
     get = ult.pattern_match.group(1).strip()
     xx = random.randint(0, 5)
@@ -96,7 +96,7 @@ async def gifs(ult):
     await m.delete()
 
 
-@puii_cmd(pattern="vtog$")
+@EvoXD_cmd(pattern="vtog$")
 async def vtogif(e):
     a = await e.get_reply_message()
     if not (a and a.media):
