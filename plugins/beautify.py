@@ -15,7 +15,7 @@ import random
 
 from telethon.utils import get_display_name
 
-from . import Carbon, puii_cmd, get_string, inline_mention
+from . import Carbon, EvoXD_cmd, get_string, inline_mention
 
 _colorspath = "resources/colorlist.txt"
 
@@ -26,7 +26,7 @@ else:
     all_col = []
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="(rc|c)arbon",
 )
 async def cr_bn(event):
@@ -47,7 +47,7 @@ async def cr_bn(event):
             code = event.text.split(" ", maxsplit=1)[1]
         except IndexError:
             return await xxxx.eor(get_string("carbon_2"))
-    xx = await Carbon(code=code, file_name="puii_carbon", backgroundColor=col)
+    xx = await Carbon(code=code, file_name="EvoXD_carbon", backgroundColor=col)
     if isinstance(xx, dict):
         await xxxx.edit(f"`{xx}`")
         return
@@ -58,7 +58,7 @@ async def cr_bn(event):
     )
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="ccarbon( (.*)|$)",
 )
 async def crbn(event):
@@ -102,7 +102,7 @@ RaySoTheme = [
 ]
 
 
-@puii_cmd(pattern="rayso")
+@EvoXD_cmd(pattern="rayso")
 async def pass_on(ult):
     spli = ult.text.split()
     theme, dark, title, text = None, True, get_display_name(ult.chat), None
