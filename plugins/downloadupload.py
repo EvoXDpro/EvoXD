@@ -18,8 +18,8 @@ from datetime import datetime as dt
 from aiohttp.client_exceptions import InvalidURL
 from telethon.errors.rpcerrorlist import MessageNotModifiedError
 
-from pyPuii.fns.helper import time_formatter
-from pyPuii.fns.tools import get_chat_and_msgid, set_attributes
+from pyEvoXD.fns.helper import time_formatter
+from pyEvoXD.fns.tools import get_chat_and_msgid, set_attributes
 
 from . import (
     LOGS,
@@ -31,11 +31,11 @@ from . import (
     get_string,
     progress,
     time_formatter,
-    puii_cmd,
+    EvoXD_cmd,
 )
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="download( (.*)|$)",
 )
 async def down(event):
@@ -69,7 +69,7 @@ async def down(event):
     await msg.eor(f"`{filename}` `downloaded in {time_formatter(d*1000)}.`")
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="dl( (.*)|$)",
 )
 async def download(event):
@@ -130,7 +130,7 @@ async def download(event):
     await xx.eor(get_string("udl_2").format(file_name, t))
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="ul( (.*)|$)",
 )
 async def _(event):
