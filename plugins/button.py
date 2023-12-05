@@ -14,13 +14,13 @@ import os
 from telegraph import upload_file as uf
 from telethon.utils import pack_bot_file_id
 
-from pyPuii.fns.tools import create_tl_btn, get_msg_button
+from pyEvoXD.fns.tools import create_tl_btn, get_msg_button
 
-from . import HNDLR, get_string, mediainfo, puii_cmd
+from . import HNDLR, get_string, mediainfo, EvoXD_cmd
 from ._inline import something
 
 
-@puii_cmd(pattern="button")
+@EvoXD_cmd(pattern="button")
 async def butt(event):
     media, wut, text = None, None, None
     if event.reply_to:
