@@ -18,7 +18,7 @@ from pprint import pprint
 
 from telethon.utils import get_display_name
 
-from pyPuii import _ignore_eval
+from pyEvoXD import _ignore_eval
 
 from . import *
 
@@ -32,7 +32,7 @@ from random import choice
 try:
     from yaml import safe_load
 except ImportError:
-    from pyPuii.fns.tools import safe_load
+    from pyEvoXD.fns.tools import safe_load
 try:
     from telegraph import upload_file as uf
 except ImportError:
@@ -42,7 +42,7 @@ from telethon.tl import functions
 fn = functions
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="sysinfo$",
 )
 async def _(e):
@@ -61,7 +61,7 @@ async def _(e):
     remove("neo.txt")
 
 
-@puii_cmd(pattern="bash", fullsudo=True, only_devs=True)
+@EvoXD_cmd(pattern="bash", fullsudo=True, only_devs=True)
 async def _(event):
     carb, rayso, yamlf = None, None, False
     try:
@@ -165,7 +165,7 @@ async def _(event):
 
 
 pp = pprint  # ignore: pylint
-bot = puii = puii_bot
+bot = EvoXD = EvoXD_bot
 
 
 class u:
@@ -196,7 +196,7 @@ def _parse_eval(value=None):
     return str(value)
 
 
-@puii_cmd(pattern="eval", fullsudo=True, only_devs=True)
+@EvoXD_cmd(pattern="eval", fullsudo=True, only_devs=True)
 async def _(event):
     try:
         cmd = event.text.split(maxsplit=1)[1]
@@ -238,7 +238,7 @@ async def _(event):
             pass
     reply_to_id = event.reply_to_msg_id or event
     if any(item in cmd for item in KEEP_SAFE().All) and (
-        not (event.out or event.sender_id == puii_bot.uid)
+        not (event.out or event.sender_id == EvoXD_bot.uid)
     ):
         warning = await event.forward_to(udB.get_key("LOG_CHANNEL"))
         await warning.reply(
@@ -347,7 +347,7 @@ int main(){
 """
 
 
-@puii_cmd(pattern="cpp", only_devs=True)
+@EvoXD_cmd(pattern="cpp", only_devs=True)
 async def doie(e):
     match = e.text.split(" ", maxsplit=1)
     try:
@@ -358,20 +358,20 @@ async def doie(e):
     if "main(" not in match:
         new_m = "".join(" " * 4 + i + "\n" for i in match.split("\n"))
         match = DUMMY_CPP.replace("!code", new_m)
-    open("cpp-puii.cpp", "w").write(match)
-    m = await bash("g++ -o CppPuii cpp-puii.cpp")
+    open("cpp-EvoXD.cpp", "w").write(match)
+    m = await bash("g++ -o CppEvoXD cpp-EvoXD.cpp")
     o_cpp = f"• **Eval-Cpp**\n`{match}`"
     if m[1]:
         o_cpp += f"\n\n**• Error :**\n`{m[1]}`"
         if len(o_cpp) > 3000:
-            os.remove("cpp-puii.cpp")
-            if os.path.exists("CppPuii"):
-                os.remove("CppPuii")
+            os.remove("cpp-EvoXD.cpp")
+            if os.path.exists("CppEvoXD"):
+                os.remove("CppEvoXD")
             with BytesIO(str.encode(o_cpp)) as out_file:
                 out_file.name = "error.txt"
                 return await msg.reply(f"`{match}`", file=out_file)
         return await eor(msg, o_cpp)
-    m = await bash("./CppPuii")
+    m = await bash("./CppEvoXD")
     if m[0] != "":
         o_cpp += f"\n\n**• Output :**\n`{m[0]}`"
     if m[1]:
@@ -382,5 +382,5 @@ async def doie(e):
             await msg.reply(f"`{match}`", file=out_file)
     else:
         await eor(msg, o_cpp)
-    os.remove("CppPuii")
-    os.remove("cpp-puii.cpp")
+    os.remove("CppEvoXD")
+    os.remove("cpp-EvoXD.cpp")
