@@ -12,12 +12,12 @@ __doc__ = get_help("help_fakeaction")
 import math
 import time
 
-from pyPuii.fns.admins import ban_time
+from pyEvoXD.fns.admins import ban_time
 
-from . import asyncio, get_string, puii_cmd
+from . import asyncio, get_string, EvoXD_cmd
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="f(typing|audio|contact|document|game|location|sticker|photo|round|video)( (.*)|$)"
 )
 async def _(e):
