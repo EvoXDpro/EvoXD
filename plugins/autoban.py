@@ -11,9 +11,9 @@ __doc__ = get_help("help_autoban")
 
 from telethon import events
 
-from pyPuii.dB.base import KeyManager
+from pyEvoXD.dB.base import KeyManager
 
-from . import LOGS, asst, puii_bot, puii_cmd
+from . import LOGS, asst, EvoXD_bot, EvoXD_cmd
 
 Keym = KeyManager("DND_CHATS", cast=list)
 
@@ -32,7 +32,7 @@ async def dnd_func(event):
     await event.delete()
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="autokick (on|off)$",
     admins_only=True,
     manager=True,
@@ -55,5 +55,5 @@ async def _(event):
 
 
 if Keym.get():
-    puii_bot.add_handler(dnd_func, events.ChatAction(func=join_func))
+    EvoXD_bot.add_handler(dnd_func, events.ChatAction(func=join_func))
     asst.add_handler(dnd_func, events.ChatAction(func=join_func))
