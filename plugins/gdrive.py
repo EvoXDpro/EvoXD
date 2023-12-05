@@ -30,13 +30,13 @@ import time
 
 from telethon.tl.types import Message
 
-from pyPuii.fns.gDrive import GDriveManager
-from pyPuii.fns.helper import time_formatter
+from pyEvoXD.fns.gDrive import GDriveManager
+from pyEvoXD.fns.helper import time_formatter
 
-from . import ULTConfig, asst, eod, eor, get_string, puii_cmd
+from . import ULTConfig, asst, eod, eor, get_string, EvoXD_cmd
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="gdown( (.*)|$)",
     fullsudo=True,
 )
@@ -56,7 +56,7 @@ async def gdown(event):
     )
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="gdlist$",
     fullsudo=True,
 )
@@ -94,7 +94,7 @@ async def files(event):
         os.remove("drive-files.txt")
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="gdul( (.*)|$)",
     fullsudo=True,
 )
@@ -171,7 +171,7 @@ async def _(event):
         await mone.edit(f"Exception occurred while uploading to gDrive {e}")
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="gdsearch( (.*)|$)",
     fullsudo=True,
 )
@@ -215,7 +215,7 @@ async def _(event):
         os.remove(f"{input_str}.txt")
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="gdfolder$",
     fullsudo=True,
 )
