@@ -11,10 +11,10 @@ __doc__ = get_help("extra")
 
 import asyncio
 
-from . import get_string, puii_cmd
+from . import get_string, EvoXD_cmd
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="del$",
     manager=True,
 )
@@ -26,7 +26,7 @@ async def delete_it(delme):
     await delme.try_delete()
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="copy$",
 )
 async def copy(e):
@@ -37,7 +37,7 @@ async def copy(e):
     await e.eor(get_string("ex_1"), time=5)
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="edit",
 )
 async def editer(edit):
@@ -61,7 +61,7 @@ async def editer(edit):
             i += 1
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="reply$",
 )
 async def _(e):
