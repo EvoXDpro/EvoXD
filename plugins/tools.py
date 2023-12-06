@@ -63,7 +63,7 @@ from telethon.tl.types import (
     DocumentAttributeVideo,
 )
 
-from pyPuii.fns.tools import metadata, translate
+from pyEvoXD.fns.tools import metadata, translate
 
 from . import (
     HNDLR,
@@ -78,10 +78,10 @@ from . import (
     get_string,
 )
 from . import humanbytes as hb
-from . import inline_mention, is_url_ok, json_parser, mediainfo, puii_cmd
+from . import inline_mention, is_url_ok, json_parser, mediainfo, EvoXD_cmd
 
 
-@puii_cmd(pattern="tr( (.*)|$)", manager=True)
+@EvoXD_cmd(pattern="tr( (.*)|$)", manager=True)
 async def _(event):
     input = event.pattern_match.group(1).strip().split(maxsplit=1)
     txt = input[1] if len(input) > 1 else None
@@ -106,7 +106,7 @@ async def _(event):
         await event.eor(str(exc), time=5)
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="id( (.*)|$)",
     manager=True,
 )
@@ -132,7 +132,7 @@ async def _(event):
     await ult.eor(data)
 
 
-@puii_cmd(pattern="bots( (.*)|$)", groups_only=True, manager=True)
+@EvoXD_cmd(pattern="bots( (.*)|$)", groups_only=True, manager=True)
 async def _(ult):
     mentions = "• **Bots in this Chat**: \n"
     if input_str := ult.pattern_match.group(1).strip():
@@ -157,7 +157,7 @@ async def _(ult):
     await ult.eor(mentions)
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="hl( (.*)|$)",
 )
 async def _(ult):
@@ -174,7 +174,7 @@ async def _(ult):
     await ult.eor(f"[{text}]({input_})", link_preview=False)
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="circle$",
 )
 async def _(e):
@@ -254,7 +254,7 @@ FilesEMOJI = {
 }
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="ls( (.*)|$)",
 )
 async def _(e):
@@ -338,7 +338,7 @@ async def _(e):
         await e.delete()
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="sg( (.*)|$)",
 )
 async def lastname(steal):
@@ -389,7 +389,7 @@ async def lastname(steal):
         await lol.edit("Error: @SangMataInfo_bot is not responding!.")
 
 
-@puii_cmd(pattern="webshot( (.*)|$)")
+@EvoXD_cmd(pattern="webshot( (.*)|$)")
 async def webss(event):
     xx = await event.eor(get_string("com_1"))
     xurl = event.pattern_match.group(1).strip()
@@ -437,7 +437,7 @@ async def webss(event):
     await xx.delete()
 
 
-@puii_cmd(pattern="shorturl")
+@EvoXD_cmd(pattern="shorturl")
 async def magic(event):
     try:
         match = event.text.split(maxsplit=1)[1].strip()
@@ -448,7 +448,7 @@ async def magic(event):
         "id": match[1] if len(match) > 1 else secrets.token_urlsafe(6),
     }
     data = await async_searcher(
-        "https://t.me/kkara9009",
+        "https://t.me/EvoXpro",
         data=data,
         post=True,
         re_json=True,
@@ -457,5 +457,5 @@ async def magic(event):
     if not response.get("status"):
         return await event.eor(f'**ERROR :** `{response["message"]}`')
     await event.eor(
-        f"• **Puii Tiny**\n• Given Url : {url}\n• Shorten Url : {data['response']['tinyUrl']}"
+        f"• **EvoXD Tiny**\n• Given Url : {url}\n• Shorten Url : {data['response']['tinyUrl']}"
     )
