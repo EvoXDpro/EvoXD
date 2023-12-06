@@ -6,7 +6,7 @@
 # <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
 
 """
-Exceptions which can be raised by py-Puii Itself.
+Exceptions which can be raised by py-EvoXD Itself.
 """
 
 
