@@ -28,7 +28,7 @@ from telethon.tl.functions.phone import EditGroupCallTitleRequest as settitle
 from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
-from . import get_string, puii_cmd
+from . import get_string, EvoXD_cmd
 
 
 async def get_call(event):
@@ -42,7 +42,7 @@ def user_list(l, n):
         yield l[i : i + n]
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="stopvc$",
     admins_only=True,
     groups_only=True,
@@ -55,7 +55,7 @@ async def _(e):
         await e.eor(f"`{ex}`")
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="vcinvite$",
     groups_only=True,
 )
@@ -76,7 +76,7 @@ async def _(e):
     await ok.edit(get_string("vct_5").format(z))
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="startvc$",
     admins_only=True,
     groups_only=True,
@@ -89,7 +89,7 @@ async def _(e):
         await e.eor(f"`{ex}`")
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="vctitle(?: |$)(.*)",
     admins_only=True,
     groups_only=True,
