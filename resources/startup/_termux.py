@@ -243,7 +243,7 @@ if not path.exists(".env"):
 
 print(with_header(f"\n{Fore.GREEN}You are all Done! 🥳"))
 sleep(0.2)
-print(f"Use 'bash startup' to try running Puii.{Fore.RESET}")
+print(f"Use 'bash startup' to try running EvoXD.{Fore.RESET}")
 sleep(0.5)
 print(
     "\nYou can head over to @EvoXpro, if you get stuck somewhere, and need help."
