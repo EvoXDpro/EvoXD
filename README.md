@@ -38,7 +38,7 @@ Get the [Necessary Variables](#Necessary-Variables) and then click the button be
 - Clone the repository:    
 `git clone https://github.com/EvoXDpro/EvoXD`
 - Go to the cloned folder:    
-`cd Puii`
+`cd EvoXD`
 - Create a virtual env:      
 `virtualenv -p /usr/bin/python3 venv`
 `. ./venv/bin/activate`
@@ -53,8 +53,8 @@ Get the [Necessary Variables](#Necessary-Variables) and then click the button be
   - For Termux users:
     `wget -O session.py https://git.io/JY9JI && python session.py`
   - For Windows Users:
-    `cd desktop ; wget https://git.io/JY9JI -o puii.py ; python puii.py`
-- Fill your details in a `.env` file, as given in [`.env.sample`](https://github.com/AellyXD/Puii/blob/main/.env.sample).
+    `cd desktop ; wget https://git.io/JY9JI -o EvoXD.py ; python EvoXD.py`
+- Fill your details in a `.env` file, as given in [`.env.sample`](https://github.com/EvoXDpro/EvoXD/blob/main/.env.sample).
 (You can either edit and rename the file or make a new file named `.env`.)
 - Run the bot:
   - Linux Users:
