@@ -54,7 +54,7 @@ async def repify(e):
 
 
 @EvoXD_cmd(pattern="pEvoXD$")
-async def usePuii(rs):
+async def useEvoXD(rs):
     button = Button.inline("Start >>", "initft_2")
     msg = await asst.send_message(
         LOG_CHANNEL,
