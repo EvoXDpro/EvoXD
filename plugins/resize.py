@@ -16,10 +16,10 @@
 """
 from PIL import Image
 
-from . import HNDLR, eor, get_string, os, puii_cmd
+from . import HNDLR, eor, get_string, os, EvoXD_cmd
 
 
-@puii_cmd(pattern="size$")
+@EvoXD_cmd(pattern="size$")
 async def size(e):
     r = await e.get_reply_message()
     if not (r and r.media):
@@ -35,7 +35,7 @@ async def size(e):
     os.remove(img)
 
 
-@puii_cmd(pattern="resize( (.*)|$)")
+@EvoXD_cmd(pattern="resize( (.*)|$)")
 async def resize(e):
     r = await e.get_reply_message()
     if not (r and r.media):
