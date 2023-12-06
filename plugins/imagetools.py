@@ -81,11 +81,11 @@ from . import (
     get_string,
     requests,
     udB,
-    puii_cmd,
+    EvoXD_cmd,
 )
 
 
-@puii_cmd(pattern="color$")
+@EvoXD_cmd(pattern="color$")
 async def _(event):
     reply = await event.get_reply_message()
     if not (reply and reply.media):
@@ -115,7 +115,7 @@ async def _(event):
     await xx.delete()
 
 
-@puii_cmd(pattern="(grey|blur|negative|danger|mirror|quad|sketch|flip|toon)$")
+@EvoXD_cmd(pattern="(grey|blur|negative|danger|mirror|quad|sketch|flip|toon)$")
 async def ult_tools(event):
     match = event.pattern_match.group(1)
     ureply = await event.get_reply_message()
@@ -129,34 +129,34 @@ async def ult_tools(event):
     file = await con.convert(ultt, convert_to="png", outname="ult")
     ult = cv2.imread(file)
     if match == "grey":
-        puii = cv2.cvtColor(ult, cv2.COLOR_BGR2GRAY)
+        EvoXD = cv2.cvtColor(ult, cv2.COLOR_BGR2GRAY)
     elif match == "blur":
-        puii = cv2.GaussianBlur(ult, (35, 35), 0)
+        EvoXD = cv2.GaussianBlur(ult, (35, 35), 0)
     elif match == "negative":
-        puii = cv2.bitwise_not(ult)
+        EvoXD = cv2.bitwise_not(ult)
     elif match == "danger":
         dan = cv2.cvtColor(ult, cv2.COLOR_BGR2RGB)
-        puii = cv2.cvtColor(dan, cv2.COLOR_HSV2BGR)
+        EvoXD = cv2.cvtColor(dan, cv2.COLOR_HSV2BGR)
     elif match == "mirror":
         ish = cv2.flip(ult, 1)
-        puii = cv2.hconcat([ult, ish])
+        EvoXD = cv2.hconcat([ult, ish])
     elif match == "flip":
         trn = cv2.flip(ult, 1)
         ish = cv2.rotate(trn, cv2.ROTATE_180)
-        puii = cv2.vconcat([ult, ish])
+        EvoXD = cv2.vconcat([ult, ish])
     elif match == "quad":
         ult = cv2.imread(file)
         roid = cv2.flip(ult, 1)
         mici = cv2.hconcat([ult, roid])
         fr = cv2.flip(mici, 1)
         trn = cv2.rotate(fr, cv2.ROTATE_180)
-        puii = cv2.vconcat([mici, trn])
+        EvoXD = cv2.vconcat([mici, trn])
     elif match == "sketch":
         gray_image = cv2.cvtColor(ult, cv2.COLOR_BGR2GRAY)
         inverted_gray_image = 255 - gray_image
         blurred_img = cv2.GaussianBlur(inverted_gray_image, (21, 21), 0)
         inverted_blurred_img = 255 - blurred_img
-        puii = cv2.divide(gray_image, inverted_blurred_img, scale=256.0)
+        EvoXD = cv2.divide(gray_image, inverted_blurred_img, scale=256.0)
     elif match == "toon":
         height, width, _ = ult.shape
         samples = np.zeros([height * width, 3], dtype=np.float32)
@@ -175,8 +175,8 @@ async def ult_tools(event):
         )
         centers = np.uint8(centers)
         ish = centers[labels.flatten()]
-        puii = ish.reshape(ult.shape)
-    cv2.imwrite("ult.jpg", puii)
+        EvoXD = ish.reshape(ult.shape)
+    cv2.imwrite("ult.jpg", EvoXD)
     await ureply.reply(
         file="ult.jpg",
         force_document=False,
@@ -186,7 +186,7 @@ async def ult_tools(event):
     os.remove(file)
 
 
-@puii_cmd(pattern="csample (.*)")
+@EvoXD_cmd(pattern="csample (.*)")
 async def sampl(ult):
     if color := ult.pattern_match.group(1).strip():
         img = Image.new("RGB", (200, 100), f"{color}")
@@ -204,7 +204,7 @@ async def sampl(ult):
         await ult.eor("Wrong Color Name/Hex Code specified!")
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="blue$",
 )
 async def ultd(event):
@@ -240,7 +240,7 @@ async def ultd(event):
     os.remove(ultt)
 
 
-@puii_cmd(pattern="border( (.*)|$)")
+@EvoXD_cmd(pattern="border( (.*)|$)")
 async def ok(event):
     hm = await event.get_reply_message()
     if not (hm and (hm.photo or hm.sticker)):
@@ -268,7 +268,7 @@ async def ok(event):
     await event.delete()
 
 
-@puii_cmd(pattern="pixelator( (.*)|$)")
+@EvoXD_cmd(pattern="pixelator( (.*)|$)")
 async def pixelator(event):
     reply_message = await event.get_reply_message()
     if not (reply_message and (reply_message.photo or reply_message.sticker)):
@@ -286,7 +286,7 @@ async def pixelator(event):
     temp = cv2.resize(input_, (w, h), interpolation=cv2.INTER_LINEAR)
     output = cv2.resize(temp, (width, height), interpolation=cv2.INTER_NEAREST)
     cv2.imwrite("output.jpg", output)
-    await msg.respond("• Pixelated by Puii", file="output.jpg")
+    await msg.respond("• Pixelated by EvoXD", file="output.jpg")
     await msg.delete()
     os.remove("output.jpg")
     os.remove(image)
