@@ -23,13 +23,13 @@ try:
     from PIL import Image
 except ImportError:
     Image = None
-from pyPuii.fns.misc import unsplashsearch
-from pyPuii.fns.tools import LogoHelper
+from pyEvoXD.fns.misc import unsplashsearch
+from pyEvoXD.fns.tools import LogoHelper
 
-from . import OWNER_ID, OWNER_NAME, download_file, get_string, mediainfo, puii_cmd
+from . import OWNER_ID, OWNER_NAME, download_file, get_string, mediainfo, EvoXD_cmd
 
 
-@puii_cmd(pattern="logo( (.*)|$)")
+@EvoXD_cmd(pattern="logo( (.*)|$)")
 async def logo_gen(event):
     xx = await event.eor(get_string("com_1"))
     name = event.pattern_match.group(1).strip()
@@ -68,7 +68,7 @@ async def logo_gen(event):
         else:
             pics = []
             async for i in event.client.iter_messages(
-                "@PuiiLogos", filter=InputMessagesFilterPhotos
+                "@EvoXDLogos", filter=InputMessagesFilterPhotos
             ):
                 pics.append(i)
             id_ = random.choice(pics)
