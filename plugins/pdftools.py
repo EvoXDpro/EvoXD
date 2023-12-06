@@ -41,7 +41,7 @@ except ImportError:
 from PyPDF2 import PdfFileMerger, PdfFileReader, PdfFileWriter
 from telethon.errors.rpcerrorlist import PhotoSaveFileInvalidError
 
-from pyPuii.fns.tools import four_point_transform
+from pyEvoXD.fns.tools import four_point_transform
 
 from . import (
     HNDLR,
@@ -51,14 +51,14 @@ from . import (
     downloader,
     eor,
     get_string,
-    puii_cmd,
+    EvoXD_cmd,
 )
 
 if not os.path.isdir("pdf"):
     os.mkdir("pdf")
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="pdf( (.*)|$)",
 )
 async def pdfseimg(event):
@@ -120,7 +120,7 @@ async def pdfseimg(event):
         os.remove("ult.png")
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="pdtext( (.*)|$)",
 )
 async def pdfsetxt(event):
@@ -176,7 +176,7 @@ async def pdfsetxt(event):
     os.remove(dl)
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="pdscan( (.*)|$)",
 )
 async def imgscan(event):
@@ -246,7 +246,7 @@ async def imgscan(event):
     os.remove(scann)
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="pdsave( (.*)|$)",
 )
 async def savepdf(event):
@@ -326,7 +326,7 @@ async def savepdf(event):
     os.remove(ultt)
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="pdsend( (.*)|$)",
 )
 async def sendpdf(event):
