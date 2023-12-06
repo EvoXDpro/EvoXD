@@ -11,12 +11,12 @@
     Unsplash Image Search.
 """
 
-from pyPuii.fns.misc import unsplashsearch
+from pyEvoXD.fns.misc import unsplashsearch
 
-from . import asyncio, download_file, get_string, os, puii_cmd
+from . import asyncio, download_file, get_string, os, EvoXD_cmd
 
 
-@puii_cmd(pattern="unsplash( (.*)|$)")
+@EvoXD_cmd(pattern="unsplash( (.*)|$)")
 async def searchunsl(ult):
     match = ult.pattern_match.group(1).strip()
     if not match:
