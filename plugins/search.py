@@ -38,13 +38,13 @@ except ImportError:
     cv2 = None
 from telethon.tl.types import DocumentAttributeAudio
 
-from pyPuii.fns.misc import google_search
-from pyPuii.fns.tools import get_google_images, saavn_search
+from pyEvoXD.fns.misc import google_search
+from pyEvoXD.fns.tools import get_google_images, saavn_search
 
-from . import LOGS, async_searcher, con, eod, fast_download, get_string, puii_cmd
+from . import LOGS, async_searcher, con, eod, fast_download, get_string, EvoXD_cmd
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="github (.*)",
 )
 async def gitsearch(event):
@@ -85,7 +85,7 @@ async def gitsearch(event):
     await event.delete()
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="google( (.*)|$)",
     manager=True,
 )
@@ -107,7 +107,7 @@ async def google(event):
     await x.eor(omk, link_preview=False)
 
 
-@puii_cmd(pattern="img( (.*)|$)")
+@EvoXD_cmd(pattern="img( (.*)|$)")
 async def goimg(event):
     query = event.pattern_match.group(1).strip()
     if not query:
@@ -129,7 +129,7 @@ async def goimg(event):
     await nn.delete()
 
 
-@puii_cmd(pattern="reverse$")
+@EvoXD_cmd(pattern="reverse$")
 async def reverse(event):
     reply = await event.get_reply_message()
     if not reply:
@@ -171,7 +171,7 @@ async def reverse(event):
     os.remove(file)
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="saavn( (.*)|$)",
 )
 async def siesace(e):
