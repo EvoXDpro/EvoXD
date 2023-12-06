@@ -21,7 +21,7 @@ import math
 import shutil
 from random import choice
 
-from pyPuii.fns import some_random_headers
+from pyEvoXD.fns import some_random_headers
 
 from . import (
     HOSTED_ON,
@@ -31,7 +31,7 @@ from . import (
     get_string,
     humanbytes,
     udB,
-    puii_cmd,
+    EvoXD_cmd,
 )
 
 HEROKU_API = None
@@ -51,7 +51,7 @@ if HOSTED_ON == "heroku":
         LOGS.exception(er)
 
 
-@puii_cmd(pattern="usage")
+@EvoXD_cmd(pattern="usage")
 async def usage_finder(event):
     x = await event.eor(get_string("com_1"))
     try:
