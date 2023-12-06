@@ -14,12 +14,12 @@
 """
 from datetime import timedelta
 
-from pyPuii.fns.admins import ban_time
+from pyEvoXD.fns.admins import ban_time
 
-from . import get_string, puii_cmd
+from . import get_string, EvoXD_cmd
 
 
-@puii_cmd(pattern="schedule( (.*)|$)", fullsudo=True)
+@EvoXD_cmd(pattern="schedule( (.*)|$)", fullsudo=True)
 async def _(e):
     x = e.pattern_match.group(1).strip()
     xx = await e.get_reply_message()
