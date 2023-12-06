@@ -181,7 +181,7 @@ print(
 (__)  (______)(____)(____)
 {Style.RESET_ALL}
 {Fore.GREEN}- EVOXD Termux Installation -
-  The Main Aim of this script is to deploy Puii with basic requirements and save your phone resources.
+  The Main Aim of this script is to deploy EvoXD with basic requirements and save your phone resources.
 {Fore.RESET}
 
 {COPYRIGHT}
