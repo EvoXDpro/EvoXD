@@ -15,12 +15,12 @@
 """
 from telethon.tl.functions.messages import EditChatDefaultBannedRightsRequest
 
-from pyPuii.fns.admins import lock_unlock
+from pyEvoXD.fns.admins import lock_unlock
 
-from . import puii_cmd
+from . import EvoXD_cmd
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="(un|)lock( (.*)|$)", admins_only=True, manager=True, require="change_info"
 )
 async def un_lock(e):
