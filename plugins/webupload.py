@@ -14,12 +14,12 @@
 
 import os
 
-from pyPuii.fns.tools import _webupload_cache
+from pyEvoXD.fns.tools import _webupload_cache
 
-from . import Button, asst, get_string, puii_cmd
+from . import Button, asst, get_string, EvoXD_cmd
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="webupload( (.*)|$)",
 )
 async def _(event):
