@@ -33,12 +33,12 @@ from . import (
     downloader,
     get_all_files,
     get_string,
-    puii_cmd,
+    EvoXD_cmd,
     uploader,
 )
 
 
-@puii_cmd(pattern="zip( (.*)|$)")
+@EvoXD_cmd(pattern="zip( (.*)|$)")
 async def zipp(event):
     reply = await event.get_reply_message()
     t = time.time()
@@ -77,7 +77,7 @@ async def zipp(event):
     await xx.delete()
 
 
-@puii_cmd(pattern="unzip( (.*)|$)")
+@EvoXD_cmd(pattern="unzip( (.*)|$)")
 async def unzipp(event):
     reply = await event.get_reply_message()
     file = event.pattern_match.group(1).strip()
@@ -115,7 +115,7 @@ async def unzipp(event):
     await xx.delete()
 
 
-@puii_cmd(pattern="addzip$")
+@EvoXD_cmd(pattern="addzip$")
 async def azipp(event):
     reply = await event.get_reply_message()
     t = time.time()
@@ -144,19 +144,19 @@ async def azipp(event):
     )
 
 
-@puii_cmd(pattern="dozip( (.*)|$)")
+@EvoXD_cmd(pattern="dozip( (.*)|$)")
 async def do_zip(event):
     if not os.path.isdir("zip"):
         return await event.eor(get_string("zip_2").format(HNDLR))
     xx = await event.eor(get_string("com_1"))
     if event.pattern_match.group(1).strip():
         await bash(
-            f"zip -r --password {event.pattern_match.group(1).strip()} puii.zip zip/*"
+            f"zip -r --password {event.pattern_match.group(1).strip()} EvoXD.zip zip/*"
         )
     else:
-        await bash("zip -r puii.zip zip/*")
+        await bash("zip -r EvoXD.zip zip/*")
     k = time.time()
-    xxx = await uploader("puii.zip", "puii.zip", k, xx, get_string("com_6"))
+    xxx = await uploader("EvoXD.zip", "puii.zip", k, xx, get_string("com_6"))
     await event.client.send_file(
         event.chat_id,
         xxx,
@@ -164,5 +164,5 @@ async def do_zip(event):
         thumb=ULTConfig.thumb,
     )
     await bash("rm -rf zip")
-    os.remove("puii.zip")
+    os.remove("EvoXD.zip")
     await xx.delete()
