@@ -54,7 +54,7 @@ def telethon_session():
 
         x = "\bDone. Installed and imported Telethon."
     clear_screen()
-    print(PUII)
+    print(EVOXD)
     print(x)
 
     # the imports
@@ -74,7 +74,7 @@ def telethon_session():
         with TelegramClient(StringSession(), API_ID, API_HASH) as EvoXD:
             print("Generating a string session for •PUII•")
             try:
-                puii.send_message(
+                EvoXD.send_message(
                     "me",
                     f"**EVOXD** `SESSION`:\n\n`{EvoXD.session.save()}`\n\n**Do not share this anywhere!**",
                 )
@@ -116,7 +116,7 @@ def pyro_session():
         from pyrogram import Client
         
     clear_screen()
-    print(PUII)
+    print(EVOXD)
     print(x)
 
     # generate a session
@@ -138,7 +138,7 @@ def pyro_session():
 
 def main():
     clear_screen()
-    print(PUII)
+    print(EVOXD)
     try:
         type_of_ss = int(
             input(
