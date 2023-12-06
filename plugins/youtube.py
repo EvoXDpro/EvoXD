@@ -19,12 +19,12 @@
 • `{i}ytsv <(youtube) search query>`
    Search and download video from youtube.
 """
-from pyPuii.fns.ytdl import download_yt, get_yt_link
+from pyEvoXD.fns.ytdl import download_yt, get_yt_link
 
-from . import get_string, requests, puii_cmd
+from . import get_string, requests, EvoXD_cmd
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="yt(a|v|sa|sv) ?(.*)",
 )
 async def download_from_youtube_(event):
