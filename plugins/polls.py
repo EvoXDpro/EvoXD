@@ -20,10 +20,10 @@
 """
 from telethon.tl.types import InputMediaPoll, Poll, PollAnswer
 
-from . import get_string, puii_cmd
+from . import get_string, EvoXD_cmd
 
 
-@puii_cmd(
+@EvoXD_cmd(
     pattern="poll( (.*)|$)",
 )
 async def uri_poll(e):
