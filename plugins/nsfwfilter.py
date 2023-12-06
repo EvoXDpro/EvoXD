@@ -23,12 +23,12 @@ try:
 except ImportError:
     detector = None
     LOGS.error("nsfwfilter: 'Profanitydetector' not installed!")
-from pyPuii.dB.nsfw_db import is_nsfw, nsfw_chat, rem_nsfw
+from pyEvoXD.dB.nsfw_db import is_nsfw, nsfw_chat, rem_nsfw
 
-from . import HNDLR, async_searcher, eor, events, udB, puii_bot, puii_cmd
+from . import HNDLR, async_searcher, eor, events, udB, EvoXD_bot, EvoXD_cmd
 
 
-@puii_cmd(pattern="addnsfw( (.*)|$)", admins_only=True)
+@EvoXD_cmd(pattern="addnsfw( (.*)|$)", admins_only=True)
 async def addnsfw(e):
     if not udB.get_key("DEEP_API"):
         return await eor(
@@ -38,11 +38,11 @@ async def addnsfw(e):
     if not action or ("ban" or "kick" or "mute") not in action:
         action = "mute"
     nsfw_chat(e.chat_id, action)
-    puii_bot.add_handler(nsfw_check, events.NewMessage(incoming=True))
+    EvoXD_bot.add_handler(nsfw_check, events.NewMessage(incoming=True))
     await e.eor("Added This Chat To Nsfw Filter")
 
 
-@puii_cmd(pattern="remnsfw", admins_only=True)
+@EvoXD_cmd(pattern="remnsfw", admins_only=True)
 async def remnsfw(e):
     rem_nsfw(e.chat_id)
     await e.eor("Removed This Chat from Nsfw Filter.")
@@ -98,52 +98,52 @@ async def nsfw_check(e):
                     )
                 if "mute" in action:
                     try:
-                        await puii_bot.edit_permissions(
+                        await EvoXD_bot.edit_permissions(
                             chat, e.sender_id, until_date=None, send_messages=False
                         )
-                        await puii_bot.send_message(
+                        await EvoXD_bot.send_message(
                             chat,
                             f"NSFW Warn 3/3 to [{e.sender.first_name}](tg://user?id={e.sender_id})\n\n**Action Taken** : {action}",
                         )
                     except BaseException:
-                        await puii_bot.send_message(
+                        await EvoXD_bot.send_message(
                             chat,
                             f"NSFW Warn 3/3 to [{e.sender.first_name}](tg://user?id={e.sender_id})\n\nUnable to {action}.",
                         )
                 elif "ban" in action:
                     try:
-                        await puii_bot.edit_permissions(
+                        await EvoXD_bot.edit_permissions(
                             chat, e.sender_id, view_messages=False
                         )
-                        await puii_bot.send_message(
+                        await EvoXD_bot.send_message(
                             chat,
                             f"NSFW Warn 3/3 to [{e.sender.first_name}](tg://user?id={e.sender_id})\n\n**Action Taken** : {action}",
                         )
                     except BaseException:
-                        await puii_bot.send_message(
+                        await EvoXD_bot.send_message(
                             chat,
                             f"NSFW Warn 3/3 to [{e.sender.first_name}](tg://user?id={e.sender_id})\n\nUnable to {action}.",
                         )
                 elif "kick" in action:
                     try:
-                        await puii_bot.kick_participant(chat, e.sender_id)
-                        await puii_bot.send_message(
+                        await EvoXD_bot.kick_participant(chat, e.sender_id)
+                        await EvoXD_bot.send_message(
                             chat,
                             f"NSFW Warn 3/3 to [{e.sender.first_name}](tg://user?id={e.sender_id})\n\n**Action Taken** : {action}",
                         )
                     except BaseException:
-                        await puii_bot.send_message(
+                        await EvoXD_bot.send_message(
                             chat,
                             f"NSFW Warn 3/3 to [{e.sender.first_name}](tg://user?id={e.sender_id})\n\nUnable to {action}.",
                         )
                 NWARN.pop(e.sender_id)
             else:
                 NWARN.update({e.sender_id: 1})
-                return await puii_bot.send_message(
+                return await EvoXD_bot.send_message(
                     chat,
                     f"**NSFW Warn 1/3** To [{e.sender.first_name}](tg://user?id={e.sender_id})\nNSFW prohibited! Repeated violation would lead to {action}",
                 )
 
 
 if udB.get_key("NSFW"):
-    puii_bot.add_handler(nsfw_check, events.NewMessage(incoming=True))
+    EvoXD_bot.add_handler(nsfw_check, events.NewMessage(incoming=True))
