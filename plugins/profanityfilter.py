@@ -15,12 +15,12 @@
 
 """
 
-from pyPuii.dB.nsfw_db import profan_chat, rem_profan
+from pyEvoXD.dB.nsfw_db import profan_chat, rem_profan
 
-from . import get_string, puii_cmd
+from . import get_string, EvoXD_cmd
 
 
-@puii_cmd(pattern="(add|rem)profanity$", admins_only=True)
+@EvoXD_cmd(pattern="(add|rem)profanity$", admins_only=True)
 async def addp(e):
     cas = e.pattern_match.group(1)
     add = cas == "add"
