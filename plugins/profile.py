@@ -30,14 +30,14 @@ import os
 from telethon.tl.functions.account import UpdateProfileRequest
 from telethon.tl.functions.photos import DeletePhotosRequest, UploadProfilePhotoRequest
 
-from . import eod, eor, get_string, mediainfo, puii_cmd
+from . import eod, eor, get_string, mediainfo, EvoXD_cmd
 
 TMP_DOWNLOAD_DIRECTORY = "resources/downloads/"
 
 # bio changer
 
 
-@puii_cmd(pattern="setbio( (.*)|$)", fullsudo=True)
+@EvoXD_cmd(pattern="setbio( (.*)|$)", fullsudo=True)
 async def _(ult):
     ok = await ult.eor("...")
     set = ult.pattern_match.group(1).strip()
@@ -51,7 +51,7 @@ async def _(ult):
 # name changer
 
 
-@puii_cmd(pattern="setname ?((.|//)*)", fullsudo=True)
+@EvoXD_cmd(pattern="setname ?((.|//)*)", fullsudo=True)
 async def _(ult):
     ok = await ult.eor("...")
     names = first_name = ult.pattern_match.group(1).strip()
@@ -73,7 +73,7 @@ async def _(ult):
 # profile pic
 
 
-@puii_cmd(pattern="setpic$", fullsudo=True)
+@EvoXD_cmd(pattern="setpic$", fullsudo=True)
 async def _(ult):
     if not ult.is_reply:
         return await ult.eor("`Reply to a Media..`", time=5)
@@ -95,7 +95,7 @@ async def _(ult):
 # delete profile pic(s)
 
 
-@puii_cmd(pattern="delpfp( (.*)|$)", fullsudo=True)
+@EvoXD_cmd(pattern="delpfp( (.*)|$)", fullsudo=True)
 async def remove_profilepic(delpfp):
     ok = await eor(delpfp, "`...`")
     group = delpfp.text[8:]
@@ -110,7 +110,7 @@ async def remove_profilepic(delpfp):
     await eod(ok, f"`Successfully deleted {len(pfplist)} profile picture(s).`")
 
 
-@puii_cmd(pattern="poto( (.*)|$)")
+@EvoXD_cmd(pattern="poto( (.*)|$)")
 async def gpoto(e):
     ult = e.pattern_match.group(1).strip()
 
