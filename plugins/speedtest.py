@@ -31,7 +31,7 @@ temxt = (
 )
 
 
-@EvoXD_cmd(pattern="speedtest ?(.*)")
+@evoxd_cmd(pattern="speedtest ?(.*)")
 async def speemdtest(event):
     args = event.pattern_match.group(1)
     xx = await eor(event, "`Calculating your Evo's Server Speed ...`")
