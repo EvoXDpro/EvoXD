@@ -9,7 +9,7 @@
 from . import *
 from os import remove
 
-@EvoXd_cmd(
+@evoxd_cmd(
     pattern="osinfo$",
 )
 async def _(e):
