@@ -1,4 +1,4 @@
-FROM evoxdpro/Evoxd:main
+FROM evoxdpro/evoxd:main
 
 # set timezone
 ENV TZ=Asia/Kolkata
