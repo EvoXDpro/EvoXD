@@ -12,7 +12,7 @@ import shutil
 import time
 from random import randint
 
-from ..configs import Var
+from..configs import Var
 
 try:
     from pytz import timezone
