@@ -71,12 +71,12 @@ def telethon_session():
 
     # logging in
     try:
-        with TelegramClient(StringSession(), API_ID, API_HASH) as EvoXD:
+        with TelegramClient(StringSession(), API_ID, API_HASH) as evoxd:
             print("Generating a string session for •PUII•")
             try:
                 EvoXD.send_message(
                     "me",
-                    f"**EVOXD** `SESSION`:\n\n`{EvoXD.session.save()}`\n\n**Do not share this anywhere!**",
+                    f"**EVOXD** `SESSION`:\n\n`{evoxd.session.save()}`\n\n**Do not share this anywhere!**",
                 )
                 print(
                     "Your SESSION has been generated. Check your Telegram saved messages!"
@@ -123,7 +123,7 @@ def pyro_session():
     API_ID, API_HASH = get_api_id_and_hash()
     print("Enter phone number when asked.\n\n")
     try:
-        with Client(name="EvoXD", api_id=API_ID, api_hash=API_HASH, in_memory=True) as pyro:
+        with Client(name="evoxd", api_id=API_ID, api_hash=API_HASH, in_memory=True) as pyro:
             ss = pyro.export_session_string()
             pyro.send_message(
                 "me",
